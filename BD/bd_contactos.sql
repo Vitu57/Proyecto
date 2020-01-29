@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2020 a las 20:00:58
+-- Tiempo de generación: 29-01-2020 a las 20:10:26
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -69,6 +69,7 @@ CREATE TABLE `tbl_usuario` (
   `direccion1_user` varchar(50) NOT NULL,
   `direccion2_user` varchar(50) NOT NULL,
   `imagen_user` varchar(100) NOT NULL,
+  `password_user` varchar(20) NOT NULL,
   `fk_estado_user` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -76,8 +77,8 @@ CREATE TABLE `tbl_usuario` (
 -- Volcado de datos para la tabla `tbl_usuario`
 --
 
-INSERT INTO `tbl_usuario` (`id_user`, `nombre_user`, `apellidos_user`, `telefono_user`, `email_user`, `direccion1_user`, `direccion2_user`, `imagen_user`, `fk_estado_user`) VALUES
-(2, 'Jaime', 'Carcedo Galindo', 987654321, 'jaime@gmail.com', 'av.Carmen Amaya', 'av. Alcalde Barnils', 'default.png', 1);
+INSERT INTO `tbl_usuario` (`id_user`, `nombre_user`, `apellidos_user`, `telefono_user`, `email_user`, `direccion1_user`, `direccion2_user`, `imagen_user`, `password_user`, `fk_estado_user`) VALUES
+(2, 'Jaime', 'Carcedo Galindo', 987654321, 'jaime@gmail.com', 'av.Carmen Amaya', 'av. Alcalde Barnils', 'default.png', '', 1);
 
 --
 -- Índices para tablas volcadas
