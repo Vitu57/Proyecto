@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2020 a las 20:10:26
+-- Tiempo de generación: 30-01-2020 a las 16:03:43
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -30,9 +30,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_contacto` (
   `id_contacto` int(8) NOT NULL,
+  `nombre_contacto` varchar(30) NOT NULL,
   `fk_id_user` int(4) NOT NULL,
   `fk_id_amigo` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tbl_contacto`
+--
+
+INSERT INTO `tbl_contacto` (`id_contacto`, `nombre_contacto`, `fk_id_user`, `fk_id_amigo`) VALUES
+(1, 'Victor', 2, 3),
+(2, 'Jaime', 3, 2),
+(5, 'ivan', 2, 4),
+(6, 'Jaime', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -69,7 +80,7 @@ CREATE TABLE `tbl_usuario` (
   `direccion1_user` varchar(50) NOT NULL,
   `direccion2_user` varchar(50) NOT NULL,
   `imagen_user` varchar(100) NOT NULL,
-  `password_user` varchar(20) NOT NULL,
+  `password_user` varchar(100) NOT NULL,
   `fk_estado_user` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -78,7 +89,9 @@ CREATE TABLE `tbl_usuario` (
 --
 
 INSERT INTO `tbl_usuario` (`id_user`, `nombre_user`, `apellidos_user`, `telefono_user`, `email_user`, `direccion1_user`, `direccion2_user`, `imagen_user`, `password_user`, `fk_estado_user`) VALUES
-(2, 'Jaime', 'Carcedo Galindo', 987654321, 'jaime@gmail.com', 'av.Carmen Amaya', 'av. Alcalde Barnils', 'default.png', '', 1);
+(2, 'Jaime', 'Carcedo Galindo', 987654321, 'jaime@gmail.com', 'av.Carmen Amaya', 'av. Alcalde Barnils', 'default.png', '', 1),
+(3, 'Victor', 'Perez', 987654321, 'victor@gmail.com', 'av.alcalde barnils', 'av. Alcalde Barnils', 'default.png', '81dc9bdb52d04dc20036dbd8313ed055', 1),
+(4, 'Ivan', 'Garcia', 987654321, 'ivan@gmail.com', 'av.europa', 'av.europa', 'default.png', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
 --
 -- Índices para tablas volcadas
@@ -113,19 +126,19 @@ ALTER TABLE `tbl_usuario`
 -- AUTO_INCREMENT de la tabla `tbl_contacto`
 --
 ALTER TABLE `tbl_contacto`
-  MODIFY `id_contacto` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_contacto` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_estado`
 --
 ALTER TABLE `tbl_estado`
-  MODIFY `id_estado` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_estado` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario`
 --
 ALTER TABLE `tbl_usuario`
-  MODIFY `id_user` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
