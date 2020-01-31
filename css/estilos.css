@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(270deg, #e81b6c, #f3c838, #e81b6c);
+  background-size: 600% 600%;
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  -o-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-o-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf) format('truetype');
+}
+.btn-rosa {
+  background-color: #e81b6c;
+  border: 0;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+  width: 48%;
+}
+.btn-rosa:hover {
+  background-color: #b71756;
+}
+.btn-amarillo {
+  background-color: #f9d15f;
+  border: 0;
+  padding: 10px;
+  color: #3a3a3a;
+  border-radius: 3px;
+  width: 48%;
+}
+.btn-amarillo:hover {
+  background-color: #e6c157;
+}
+.titulo-blanco {
+  font-family: Montserrat;
+  font-weight: 100;
+  color: white;
+}
+header {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+header img {
+  margin-right: 3%;
+}
+.login {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.login .contenido-login {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 5%;
+  border-radius: 5px;
+  width: 30%;
+}
+.login .contenido-login .cont-formulario form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.login .contenido-login .cont-formulario form input {
+  background-color: hsla(0, 0%, 100%, 0.42);
+  border: 0;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 15px;
+  color: white;
+}
+.login .contenido-login .cont-formulario form .botones-login {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}

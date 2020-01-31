@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+
+    // Background GRADIENT:
+
+    background: linear-gradient(270deg, #e81b6c, #f3c838, #e81b6c);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    -o-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-o-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    }
+
+
+///////////// Importar fuentes: /////////////////
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+///////////// Estilos de botones: ///////////////
+
+.btn-rosa {
+    background-color: #e81b6c;
+    border: 0;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    width: 48%;
+    &:hover {
+        background-color: #b71756;
+    }
+}
+
+.btn-amarillo {
+    background-color: #f9d15f;
+    border: 0;
+    padding: 10px;
+    color: #3a3a3a;
+    border-radius: 3px;
+    width: 48%;
+    &:hover {
+        background-color: #e6c157;
+    }
+}
+
+///////////// Estilos titulos //////////////
+
+.titulo-blanco {
+    font-family: Montserrat;
+    font-weight: 100;
+    color: white;
+}
+
+///////////// PÁGINA LOGIN: //////////////
+
+header {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    img {
+        margin-right: 3%;
+    }
+}
+
+.login {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    .contenido-login {
+        background-color: rgba(255, 255, 255, 0.4);
+        padding: 5%;
+        border-radius: 5px;
+        width: 30%;
+
+        .cont-formulario {
+            form {
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                input {
+                    background-color: hsla(0, 0%, 100%, 0.42);
+                    border: 0;
+                    border-radius: 3px;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                    color: white;
+                }
+
+                .botones-login {
+                    display: flex;
+                    flex-flow: row;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
