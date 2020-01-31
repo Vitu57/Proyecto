@@ -14,6 +14,11 @@
     include 'header.php'
     ?>
     <body>
+        <div id="buscar" style="display: none">
+            <form style="padding: 20px 10px; float: right;" onsubmit="CrearTabla(); return false">
+			<input type="text" id="contacto" autofocus placeholder="Buscar contacto..." onkeyup="CrearTabla(<?php echo $userid;?>, this.value)">
+            </form>
+        </div>
         <div style="position: relative; margin: auto; width: 50%;">
             <button onclick="CrearTabla(<?php echo $userid;?>); return false;">Mostrar tus contactos</button><br><br>
             <div id="resultado"></div>
