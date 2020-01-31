@@ -3,39 +3,43 @@ body {
     padding: 0;
     width: 100%;
     height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
 
-    // Background GRADIENT:
+.login {
+        // Background GRADIENT:
 
-    background: linear-gradient(270deg, #e81b6c, #f3c838, #e81b6c);
-    background-size: 600% 600%;
-
-    -webkit-animation: AnimationName 30s ease infinite;
-    -moz-animation: AnimationName 30s ease infinite;
-    -o-animation: AnimationName 30s ease infinite;
-    animation: AnimationName 30s ease infinite;
-
-    @-webkit-keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @-moz-keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @-o-keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    }
-
+        background: linear-gradient(270deg, #e81b6c, #f3c838, #e81b6c);
+        background-size: 600% 600%;
+    
+        -webkit-animation: AnimationName 30s ease infinite;
+        -moz-animation: AnimationName 30s ease infinite;
+        -o-animation: AnimationName 30s ease infinite;
+        animation: AnimationName 30s ease infinite;
+    
+        @-webkit-keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @-moz-keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @-o-keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+    
+}
 
 ///////////// Importar fuentes: /////////////////
 
@@ -67,12 +71,33 @@ body {
     }
 }
 
+.btn-despl-rosa {
+    position: absolute;
+    left: 95vw;
+    top: 90vh;
+    background-color: #e81b6c;
+    padding: 10px 17px;
+    font-size: 25px;
+    border-radius: 50px;
+    color: white;
+    transition: 0.4s;
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
 ///////////// Estilos titulos //////////////
 
 .titulo-blanco {
     font-family: Montserrat;
     font-weight: 100;
     color: white;
+}
+
+.titulo-negro {
+    font-family: Montserrat;
+    font-weight: 100;
+    color: black;
 }
 
 ///////////// PÁGINA LOGIN: //////////////
@@ -121,4 +146,71 @@ header {
             }
         }
     }
+}
+
+
+///////////////////////////////////////
+// TABLA CONTACTOS:
+
+.cont-tabla-contactos {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    .resultado-tabla {
+        width: 80%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        table {
+            font-family: Arial;
+            font-size: 12px;
+            width: 80%;
+            tr {
+                height: 70px;
+            }
+        }
+    }
+}
+
+.despl-add-contactos.desp-activado {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    padding: 3% 0;
+    background-color: #e42173;
+    position: absolute;
+    margin-left: 74vw;
+    margin-top: 16vh;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    opacity: 1;
+    transition: 0.2s;
+    z-index: 10;
+    form {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+    input.inp {
+        width: 100%;
+        margin-bottom: 10px;
+        background-color: #ffffff4a;
+        border: 0;
+        border-radius: 25px;
+        padding: 7px;    
+    }
+}
+
+.despl-add-contactos.desp-desactivado {
+    opacity: 0;
+    z-index: -1000;
+    margin-left: 101vw;
+    margin-top: 101vh;
 }

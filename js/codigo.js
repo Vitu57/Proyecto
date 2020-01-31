@@ -25,3 +25,21 @@ function ValidacionLogin(){
 	}
 	
 }
+
+// Botón desplegable añadir contactos
+
+function desplegable() {
+	var element = document.getElementById("despl-add-contactos");
+		element.classList.add("desp-activado");
+		element.classList.remove("desp-desactivado");
+
+	// if(document.getElementsByClassName("desp-activado")) {
+	// 	element.classList.add("desp-desactivado");
+	// 	element.classList.remove("desp-activado");
+	// 	alert('DESACTIVANDO');	
+	// }else {
+	// 	element.classList.add("desp-activado");
+	// 	element.classList.remove("desp-desactivado");	
+	// 	alert('ACTIVANDO');
+	// }
+  }

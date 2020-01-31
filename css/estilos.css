@@ -3,6 +3,10 @@ body {
   padding: 0;
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.login {
   background: linear-gradient(270deg, #e81b6c, #f3c838, #e81b6c);
   background-size: 600% 600%;
   -webkit-animation: AnimationName 30s ease infinite;
@@ -83,10 +87,29 @@ body {
 .btn-amarillo:hover {
   background-color: #e6c157;
 }
+.btn-despl-rosa {
+  position: absolute;
+  left: 95vw;
+  top: 90vh;
+  background-color: #e81b6c;
+  padding: 10px 17px;
+  font-size: 25px;
+  border-radius: 50px;
+  color: white;
+  transition: 0.4s;
+}
+.btn-despl-rosa:hover {
+  transform: scale(1.2);
+}
 .titulo-blanco {
   font-family: Montserrat;
   font-weight: 100;
   color: white;
+}
+.titulo-negro {
+  font-family: Montserrat;
+  font-weight: 100;
+  color: black;
 }
 header {
   display: flex;
@@ -126,4 +149,64 @@ header img {
   display: flex;
   flex-flow: row;
   align-items: center;
+}
+.cont-tabla-contactos {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.cont-tabla-contactos .resultado-tabla {
+  width: 80%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.cont-tabla-contactos .resultado-tabla table {
+  font-family: Arial;
+  font-size: 12px;
+  width: 80%;
+}
+.cont-tabla-contactos .resultado-tabla table tr {
+  height: 70px;
+}
+.despl-add-contactos.desp-activado {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  padding: 3% 0;
+  background-color: #e42173;
+  position: absolute;
+  margin-left: 74vw;
+  margin-top: 16vh;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  opacity: 1;
+  transition: 0.2s;
+  z-index: 10;
+}
+.despl-add-contactos.desp-activado form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.despl-add-contactos.desp-activado input.inp {
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #ffffff4a;
+  border: 0;
+  border-radius: 25px;
+  padding: 7px;
+}
+.despl-add-contactos.desp-desactivado {
+  opacity: 0;
+  z-index: -1000;
+  margin-left: 101vw;
+  margin-top: 101vh;
 }
