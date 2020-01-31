@@ -10,10 +10,10 @@
     <header><h1><center>Registrarse</center></h1></header><br>
     <p id="alerta" class="alerta" style='text-align: center' ></p>
         <!Formulario-->
-        <form id='login' action='registro.proc.php' method='post' accept-charset='UTF-8'> <!onsubmit = "return ValidacionRegistro()"-->
+        <form id='registro' action='./services/registrar.proc.php' method='post' accept-charset='UTF-8' onsubmit = "return ValidacionRegistro()">
                 <table>
                     <tr>
-                        <th><input type="email" placeholder="Introduce el email" name="username" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="username" maxlength="50"/></th>
+                        <th><input type="email" placeholder="Introduce el email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email" maxlength="50"/></th>
                     </tr>
                     <tr>
                         <th><input type='text' placeholder="Introduce el nombre" name='nombre' id='nombre' maxlength="50"/></th>

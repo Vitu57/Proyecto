@@ -37,9 +37,9 @@
                     
                     <div class="botones-login">
                         <button class="button btn-rosa" type="submit" style="margin-right: 2%">Entrar</button>
-                        <button class="button btn-amarillo" type="submit" style="margin-left: 2%">Registrarse</button>
+                        <button class="button btn-amarillo" type="button" style="margin-left: 2%" onclick="location.href='registro.php'">Registrarse</button>
                     </div> 
-                </form>
+                
             </div>
     </div>
     
