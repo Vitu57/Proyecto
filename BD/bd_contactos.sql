@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2020 a las 17:58:23
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.11
+-- Tiempo de generación: 31-01-2020 a las 02:54:26
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,6 +33,7 @@ CREATE TABLE `tbl_contacto` (
   `nombre_contacto` varchar(20) NOT NULL,
   `apellidos_contacto` varchar(50) NOT NULL,
   `telefono_contacto` int(9) NOT NULL,
+  `email_contacto` varchar(50) NOT NULL,
   `imagen_contacto` varchar(100) NOT NULL,
   `direccion1_contacto` varchar(100) NOT NULL,
   `direccion2_contacto` varchar(100) NOT NULL,
@@ -43,9 +44,9 @@ CREATE TABLE `tbl_contacto` (
 -- Volcado de datos para la tabla `tbl_contacto`
 --
 
-INSERT INTO `tbl_contacto` (`id_contacto`, `nombre_contacto`, `apellidos_contacto`, `telefono_contacto`, `imagen_contacto`, `direccion1_contacto`, `direccion2_contacto`, `fk_id_user`) VALUES
-(1, 'Victor', 'Perez', 987654321, 'default.png', 'av.europa', 'av. carmen amaya', 3),
-(2, 'Ivan', 'Garcia', 987654321, 'default.png', 'c/francia bellvitge', 'av. europa', 3);
+INSERT INTO `tbl_contacto` (`id_contacto`, `nombre_contacto`, `apellidos_contacto`, `telefono_contacto`, `email_contacto`, `imagen_contacto`, `direccion1_contacto`, `direccion2_contacto`, `fk_id_user`) VALUES
+(1, 'Victor', 'Perez', 987654321, 'victor@gmail.com', 'default.png', 'av.europa', 'av. carmen amaya', 3),
+(2, 'Ivan', 'Garcia', 987654321, 'ivan@gmail.com', 'default.png', 'c/francia bellvitge', 'av. europa', 3);
 
 -- --------------------------------------------------------
 
