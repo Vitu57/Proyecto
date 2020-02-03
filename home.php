@@ -61,7 +61,6 @@
             <div id="resultado" style="overflow-y:auto; max-height: 450px;" class="resultado-tabla"></div><br>
             <button id="bot_mostrar" value="0" class="btn-rosa" style="width: 15%" onclick="ActivarMapa(); return false;">Mostrar Mapa</button><br><br>
             <div id="map" style="display: none;"></div>
-            
         </div>
 
         <!-- Formulario Desplegable Añadir Contactos -->
@@ -80,6 +79,6 @@
         
         <!-- Botón añadir contactos -->
         <button id="btndespl" class="btn-despl-rosa" onclick="desplegable(); return false">+</a>
-
     </body>
+    
 </html>
