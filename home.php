@@ -34,10 +34,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
 
     </head>
-    <style>
-        body { margin:0; padding:0; }
-        #map { position: absolute; top:550px; bottom:0; z-index: 15; right:0; left:0; min-height:300px;max-height: 400px; margin-top: 20%;}
-    </style>
     <script type="text/javascript" src="js/codigo.js">
     </script>
     <script type="text/javascript" src="js/ajax.js">
@@ -45,14 +41,14 @@
     <script type="text/javascript" src="js/maps.js">
     </script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
-    <header><h1 class="titulo-negro">Mis Contactos</h1></header><br>
+    <!-- <header><h1 class="titulo-negro">Mis Contactos</h1></header><br> -->
     <?php 
     include 'header.php'
     ?>
-    <body onload="CrearTabla(<?php echo $userid;?>); return false;" style='overflow-y:scroll;'>
+    <body onload="CrearTabla(<?php echo $userid;?>); return false;">
         <!-- Buscador -->
-        <div id="buscar" style="position: absolute; top: 5%; left:85%">
-            <form style="padding: 20px 10px; float: right;" onsubmit="CrearTabla(); return false">
+        <div id="buscar" >
+            <form onsubmit="CrearTabla(); return false">
 			<input type="text" id="contacto" autofocus placeholder="Buscar contacto..." onkeyup="CrearTabla(<?php echo $userid;?>, this.value)">
             </form>
         </div>

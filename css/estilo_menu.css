@@ -8,7 +8,7 @@ position: fixed;
 }
 [data-component='sidebar'] .first-menu {
     position: fixed;
-    background-color: #e81b6c;
+    background-color: #dedede;
     height: 100vw;
     width: 30px;
     top: -16px;
@@ -35,12 +35,12 @@ position: fixed;
 
 }
 [data-component='sidebar'] .first-menu .list-group-item:hover {
-        background-color: #b71756;
+        background-color: #c5c5c5;
 
 }
 [data-component='sidebar'] .first-menu a {
   white-space: nowrap;
-  color: white;
+  color: grey;
   font-weight: 400;
   font-size: 0.875em;
   text-decoration: none;

@@ -4,7 +4,16 @@ body {
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
-  overflow-y: hidden;
+}
+textarea,
+select,
+input,
+button {
+  outline: none;
+}
+:focus {
+  outline-color: transparent;
+  outline-style: none;
 }
 .login {
   background: linear-gradient(270deg, #e81b6c, #f3c838, #e81b6c);
@@ -88,14 +97,14 @@ body {
   background-color: #e6c157;
 }
 .btn-despl-rosa {
-  position: absolute;
-  left: 94vw;
-  top: 90vh;
+  z-index: 10;
+  position: fixed;
+  right: 2vw;
+  bottom: 4vh;
   background-color: #e81b6c;
   padding: 10px 17px;
   font-size: 25px;
-  border-radius: 50px;
-  z-index: 9;
+  border-radius: 50%;
   color: white;
   transition: 0.4s;
 }
@@ -153,46 +162,49 @@ header img {
 }
 .cont-tabla-contactos {
   width: 100%;
-  margin-top: 50px;
-  position: absolute;
   display: flex;
   flex-flow: column;
-  z-index: 5;
   align-items: center;
   justify-content: center;
 }
 .cont-tabla-contactos .resultado-tabla {
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
 }
-
 .cont-tabla-contactos .resultado-tabla table {
-  font-family: Arial;
+  font-family: 'Montserrat';
   font-size: 12px;
   width: 80%;
+  border-spacing: 0!important;
 }
 .cont-tabla-contactos .resultado-tabla table tr {
   height: 70px;
+}
+.cont-tabla-contactos .resultado-tabla table tr:hover {
+  background: #dedede;
+}
+.cont-tabla-contactos .resultado-tabla table tr:nth-child(1):hover {
+  background: transparent;
 }
 .despl-add-contactos.desp-activado {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  width: 29%;
-  padding: 3% 0;
+  width: 20%;
+  padding: 2%;
   background-color: #e42173;
-  position: absolute;
-  margin-left: 65vw;
-  margin-top: 20vh;
+  position: fixed;
+  right: 7vw;
+  bottom: 7vh;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;
   opacity: 1;
-  transition: 0.2s;
+  transition: 0.4s;
   z-index: 10;
 }
 .despl-add-contactos.desp-activado form {
@@ -213,5 +225,29 @@ header img {
   opacity: 0;
   z-index: -1000;
   margin-left: 101vw;
-  margin-top: 101vh;
+}
+#map {
+  position: absolute;
+  top: 20px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  min-height: 300px;
+  max-height: 400px;
+  margin-top: 20%;
+  z-index: 1;
+  width: 95%;
+  margin-left: 5%;
+}
+#buscar form {
+  margin-left: 18vw;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+#buscar form input {
+  width: 40%;
+  background-color: #e2e2e2;
+  border: 1px solid #bdbdbd;
+  border-radius: 25px;
+  padding: 10px 15px;
 }
