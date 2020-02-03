@@ -16,11 +16,10 @@ button {
   outline-style: none;
 }
 .login {
-  background: linear-gradient(270deg, #e81b6c, #f3c838, #e81b6c);
+  background: linear-gradient(270deg, #557dd6, #261771, #557dd6);
   background-size: 600% 600%;
   -webkit-animation: AnimationName 30s ease infinite;
   -moz-animation: AnimationName 30s ease infinite;
-  -o-animation: AnimationName 30s ease infinite;
   animation: AnimationName 30s ease infinite;
 }
 @-webkit-keyframes AnimationName {
@@ -35,17 +34,6 @@ button {
   }
 }
 @-moz-keyframes AnimationName {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-@-o-keyframes AnimationName {
   0% {
     background-position: 0% 50%;
   }
@@ -153,7 +141,7 @@ header img {
   border-radius: 3px;
   padding: 10px;
   margin-bottom: 15px;
-  color: white;
+  color: black;
 }
 .login .contenido-login .cont-formulario form .botones-login {
   display: flex;
@@ -262,4 +250,21 @@ header img {
   right: 1vw;
   width: 100%;
   max-width: 70px;
+}
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  background-color: #557dd6;
+  border: 0;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 15px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Arial';
+  font-size: 12px;
+}
+.custom-file-upload:hover {
+  background-color: #405fa2;
 }

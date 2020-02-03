@@ -67,6 +67,7 @@
         <!-- Formulario Desplegable Añadir Contactos -->
         <div id="despl-add-contactos" class="despl-add-contactos desp-desactivado">
             <form action="#" onsubmit="ValidacionInsertar(<?php echo $userid;?>); return false;" >
+                <label for="img-contacto" class="custom-file-upload" style="display: flex; flex-flow: row; align-items: center;"><img src="img/default.png" style="width: 10%; margin-right: 5%">Subir Imagen</label>
                 <input class="inp" type="text" id="nombre-contacto" placeholder="Nombre">
                 <input class="inp" type="text" id="apellidos-contacto" placeholder="Apellidos">
                 <input class="inp" type="text" id="tlf-contacto" placeholder="Teléfono">
