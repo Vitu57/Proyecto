@@ -89,12 +89,13 @@ body {
 }
 .btn-despl-rosa {
   position: absolute;
-  left: 95vw;
+  left: 94vw;
   top: 90vh;
   background-color: #e81b6c;
   padding: 10px 17px;
   font-size: 25px;
   border-radius: 50px;
+  z-index: 9;
   color: white;
   transition: 0.4s;
 }
@@ -152,8 +153,11 @@ header img {
 }
 .cont-tabla-contactos {
   width: 100%;
+  margin-top: 50px;
+  position: absolute;
   display: flex;
   flex-flow: column;
+  z-index: 5;
   align-items: center;
   justify-content: center;
 }
@@ -164,6 +168,7 @@ header img {
   justify-content: center;
   align-items: center;
 }
+
 .cont-tabla-contactos .resultado-tabla table {
   font-family: Arial;
   font-size: 12px;
@@ -177,12 +182,12 @@ header img {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  width: 29%;
   padding: 3% 0;
   background-color: #e42173;
   position: absolute;
-  margin-left: 74vw;
-  margin-top: 16vh;
+  margin-left: 65vw;
+  margin-top: 20vh;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-color: #fcfaf2">
+<html style="background-color: #fcfaf2;">
     <head>
         <title>MyContacts</title>
         <meta charset="UTF-8">
@@ -36,7 +36,7 @@
     </head>
     <style>
         body { margin:0; padding:0; }
-        #map { position: absolute; top:20px; bottom:0; right:0; left:0; min-height:300px;max-height: 400px; margin-top: 20%;}
+        #map { position: absolute; top:550px; bottom:0; z-index: 15; right:0; left:0; min-height:300px;max-height: 400px; margin-top: 20%;}
     </style>
     <script type="text/javascript" src="js/codigo.js">
     </script>
@@ -49,30 +49,31 @@
     <?php 
     include 'header.php'
     ?>
-    <body>
-
+    <body onload="CrearTabla(<?php echo $userid;?>); return false;" style='overflow-y:scroll;'>
         <!-- Buscador -->
-        <div id="buscar" style="display: none">
+        <div id="buscar" style="position: absolute; top: 5%; left:85%">
             <form style="padding: 20px 10px; float: right;" onsubmit="CrearTabla(); return false">
 			<input type="text" id="contacto" autofocus placeholder="Buscar contacto..." onkeyup="CrearTabla(<?php echo $userid;?>, this.value)">
             </form>
         </div>
         <!-- Tabla contactos -->
         <div class="cont-tabla-contactos">
-            <button class="btn-rosa" style="width: 15%" onclick="CrearTabla(<?php echo $userid;?>); return false;">Mostrar tus contactos</button><br><br>
-            <div id="resultado" class="resultado-tabla"></div>
-            <div id="map"></div>
+            <div id="resultado" style="overflow-y:auto; max-height: 450px;" class="resultado-tabla"></div><br>
+            <button id="bot_mostrar" value="0" class="btn-rosa" style="width: 15%" onclick="ActivarMapa(); return false;">Mostrar Mapa</button><br><br>
+            <div id="map" style="display: none;"></div>
+            
         </div>
 
         <!-- Formulario Desplegable Añadir Contactos -->
         <div id="despl-add-contactos" class="despl-add-contactos desp-desactivado">
-            <form>
-                <input class="inp" type="text" name="nombre-contacto" placeholder="Nombre">
-                <input class="inp" type="text" name="apellidos-contacto" placeholder="Apellidos">
-                <input class="inp" type="text" name="tlf-contacto" placeholder="Teléfono">
-                <input class="inp" type="text" name="mail-contacto" placeholder="E-mail">
-                <input class="inp" type="text" name="direccion-1-contacto" placeholder="Dirección 1">
-                <input class="inp" type="text" name="direccion-2-contacto" placeholder="Dirección 2">
+            <form action="#" onsubmit="ValidacionInsertar(<?php echo $userid;?>); return false;" >
+                <input class="inp" type="text" id="nombre-contacto" placeholder="Nombre">
+                <input class="inp" type="text" id="apellidos-contacto" placeholder="Apellidos">
+                <input class="inp" type="text" id="tlf-contacto" placeholder="Teléfono">
+                <input class="inp" type="file" id="img-contacto">
+                <input class="inp" type="text" id="mail-contacto" placeholder="E-mail">
+                <input class="inp" type="text" id="direccion-1-contacto" placeholder="Dirección 1">
+                <input class="inp" type="text" id="direccion-2-contacto" placeholder="Dirección 2"><br>
                 <input type="submit" class="btn-amarillo" width="20%!important">
             </form>
         </div>
