@@ -30,18 +30,20 @@ function ValidacionLogin(){
 
 function desplegable() {
 	var element = document.getElementById("despl-add-contactos");
+	var botondes = document.getElementById('btndespl');
+	
+
+	if(document.getElementsByClassName("desp-activado")[0]) {
+		element.classList.add("desp-desactivado");
+		element.classList.remove("desp-activado");
+		botondes.innerHTML="+";
+		botondes.style.padding="10px 17px";
+	}else {
 		element.classList.add("desp-activado");
 		element.classList.remove("desp-desactivado");
-
-	// if(document.getElementsByClassName("desp-activado")) {
-	// 	element.classList.add("desp-desactivado");
-	// 	element.classList.remove("desp-activado");
-	// 	alert('DESACTIVANDO');	
-	// }else {
-	// 	element.classList.add("desp-activado");
-	// 	element.classList.remove("desp-desactivado");	
-	// 	alert('ACTIVANDO');
-	// }
+		botondes.innerHTML="-";
+		botondes.style.padding="10px 20px";
+	}
   }
 
 
