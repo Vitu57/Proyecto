@@ -46,6 +46,11 @@
     include 'header.php'
     ?>
     <body onload="CrearTabla(<?php echo $userid;?>); return false;">
+        
+        <div class="logo">
+            <img src="img/logo/Logo-MyContacts.png">
+        </div>
+    
         <!-- Buscador -->
         <div id="buscar" >
             <form onsubmit="CrearTabla(); return false">
@@ -55,7 +60,7 @@
         <!-- Tabla contactos -->
         <div class="cont-tabla-contactos">
             <div id="resultado" style="overflow-y:auto; max-height: 450px;" class="resultado-tabla"></div><br>
-            <button id="bot_mostrar" value="0" class="btn-rosa" style="width: 15%" onclick="ActivarMapa(); return false;">Mostrar Mapa</button><br><br>
+            <button id="bot_mostrar" value="0" class="btn-rosa" style="width: 15%; margin-top: 1%;" onclick="ActivarMapa(); return false;">Mostrar Mapa</button><br><br>
             <div id="map" style="display: none;"></div>
         </div>
 

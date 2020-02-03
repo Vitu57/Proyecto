@@ -169,6 +169,7 @@ header img {
 }
 .cont-tabla-contactos .resultado-tabla {
   width: 90%;
+  margin-left: 8%;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -177,7 +178,7 @@ header img {
 .cont-tabla-contactos .resultado-tabla table {
   font-family: 'Montserrat';
   font-size: 12px;
-  width: 80%;
+  width: 100%;
   border-spacing: 0!important;
 }
 .cont-tabla-contactos .resultado-tabla table tr {
@@ -228,16 +229,17 @@ header img {
   opacity: 0;
   z-index: -1000;
   margin-left: 101vw;
+  display: none;
 }
 #map {
-  position: absolute;
+  position: relative;
+  box-shadow: #b5b5b5 0px 0px 10px 1px;
   top: 20px;
   bottom: 0;
   right: 0;
   left: 0;
   min-height: 300px;
   max-height: 400px;
-  margin-top: 20%;
   z-index: 1;
   width: 95%;
   margin-left: 5%;
@@ -253,4 +255,11 @@ header img {
   border: 1px solid #bdbdbd;
   border-radius: 25px;
   padding: 10px 15px;
+}
+.logo img {
+  position: absolute;
+  top: 2vh;
+  right: 1vw;
+  width: 100%;
+  max-width: 70px;
 }
