@@ -234,7 +234,20 @@ function ValidacionModificarUser(userid){
 }
 
 function ActualizarUser(userid){
-    alert("hola");
+    var nombre = document.getElementById('nombre').value;
+    var mail = document.getElementById('mail-user').value;
+    var pass = document.getElementById('pass').value;
+    var pass_ant = document.getElementById('pass_ant').value;
+    var ajax2=objetoAjax();
+	ajax2.open("POST", "services/modificar_user.php", true);
+        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax2.send("userid="+userid+"&nombre="+nombre+"&mail="+mail+"&pass="+pass);
+	ajax2.onreadystatechange=function() {
+		if (ajax2.readyState==4 && ajax2.status==200) {
+                  document.getElementById('alerta').innerHTML = 'Actualización con éxito';  
+                }
+            }
+    
 }
 
 //Mapa

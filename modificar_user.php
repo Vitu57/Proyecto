@@ -24,6 +24,8 @@
                 <input type="email" name="mail-user" id="mail-user"><br>
                 <label>Nombre:</label><br>
                 <input type="text" name="nombre" id="nombre"><br>
+                <label>Contraseña Anterior:</label><br>
+                <input type="password" name="pass_ant" id="pass_ant"><br>
                 <label>Contraseña:</label><br>
                 <input type="password" name="pass" id="pass"><br>
                 <label>Verificar Contraseña:</label><br>
