@@ -69,7 +69,7 @@
                 <input class="inp" type="text" id="mail-contacto" placeholder="E-mail">
                 <input class="inp" type="text" id="direccion-1-contacto" placeholder="Dirección 1">
                 <input class="inp" type="text" id="direccion-2-contacto" placeholder="Dirección 2"><br>
-                <input type="submit" class="btn-amarillo" width="20%!important">
+                <input type="submit" class="btn-rosa" width="20%!important">
             </form>
         </div>
         

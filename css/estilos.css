@@ -75,7 +75,7 @@ button {
   src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf) format('truetype');
 }
 .btn-rosa {
-  background-color: #e81b6c;
+  background-color: #557dd6;
   border: 0;
   padding: 10px;
   color: white;
@@ -83,7 +83,7 @@ button {
   width: 48%;
 }
 .btn-rosa:hover {
-  background-color: #b71756;
+  background-color: #405fa2;
 }
 .btn-amarillo {
   background-color: #f9d15f;
@@ -101,7 +101,7 @@ button {
   position: fixed;
   right: 2vw;
   bottom: 4vh;
-  background-color: #e81b6c;
+  background-color: #557dd6;
   padding: 10px 17px;
   font-size: 25px;
   border-radius: 50%;
@@ -182,6 +182,8 @@ header img {
 }
 .cont-tabla-contactos .resultado-tabla table tr {
   height: 70px;
+  background: transparent;
+  transition: 0.4s;
 }
 .cont-tabla-contactos .resultado-tabla table tr:hover {
   background: #dedede;
@@ -190,13 +192,14 @@ header img {
   background: transparent;
 }
 .despl-add-contactos.desp-activado {
+  box-shadow: 0 0 10px 0px #989898;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   width: 20%;
   padding: 2%;
-  background-color: #e42173;
+  background-color: #dedede;
   position: fixed;
   right: 7vw;
   bottom: 7vh;

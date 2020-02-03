@@ -56,14 +56,14 @@ textarea, select, input, button {
 ///////////// Estilos de botones: ///////////////
 
 .btn-rosa {
-    background-color: #e81b6c;
+    background-color: #557dd6;
     border: 0;
     padding: 10px;
     color: white;
     border-radius: 3px;
     width: 48%;
     &:hover {
-        background-color: #b71756;
+        background-color: #405fa2;
     }
 }
 
@@ -84,7 +84,7 @@ textarea, select, input, button {
     position: fixed;
     right: 2vw;
     bottom: 4vh;
-    background-color: #e81b6c;
+    background-color: #557dd6;
     padding: 10px 17px;
     font-size: 25px;
     border-radius: 50%;
@@ -180,6 +180,8 @@ header {
             border-spacing: 0!important;
             tr {
                 height: 70px;
+                background: transparent;
+                transition: 0.4s;
                 &:hover {
                     background: #dedede;
                 }
@@ -196,13 +198,14 @@ header {
 
 
 .despl-add-contactos.desp-activado {
+    box-shadow: 0 0 10px 0px #989898;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     width: 20%;
     padding: 2%;
-    background-color: #e42173;
+    background-color: #dedede;
     position: fixed;
     right: 7vw;
     bottom: 7vh;
