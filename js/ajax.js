@@ -118,20 +118,6 @@ function limpiar(){
     var foto = document.getElementById('img-contacto').value="";
 }
 
-//Activa o Desactiva el div del mapa
-function ActivarMapa(){
-    var mostrar = document.getElementById('bot_mostrar').value;
-    if (mostrar==0){
-        document.getElementById('bot_mostrar').innerHTML = "Ocultar Mapa";
-        var buscar = document.getElementById('map').style.display = "block";
-        document.getElementById('bot_mostrar').value=1;
-    }else{
-       document.getElementById('bot_mostrar').innerHTML = "Mostrar Mapa";
-       var buscar = document.getElementById('map').style.display = "none";
-        document.getElementById('bot_mostrar').value=0; 
-    }
-}
-
 //Rellenar los campos de modificar
   function RellenarModificar(iduser){
     var ajax2=objetoAjax();
@@ -188,6 +174,111 @@ function ActualizarContacto(userid){
                     RellenarModificar(userid);
                 }
             }
+}
+
+//Actualizar Usuario
+function RellenarModificarUser(userid){
+    var ajax2=objetoAjax();
+	ajax2.open("POST", "services/consultamod_user.php", true);
+        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax2.send("userid="+userid);
+        ajax2.onreadystatechange=function() {
+		if (ajax2.readyState==4 && ajax2.status==200) {
+                    var respuesta2=JSON.parse(this.responseText);
+                    for (var i = 0; i < respuesta2.length; i++) {
+                        document.getElementById('mail-user').value = respuesta2[i].email_user;
+                        document.getElementById('nombre').value = respuesta2[i].nombre_user;
+                        
+                    }
+                }
+            }
+}
+
+function ValidacionModificarUser(userid){
+    var nombre = document.getElementById('nombre').value;
+    var email = document.getElementById('mail-user').value;
+    var pass = document.getElementById('pass').value;
+    var pass_verify = document.getElementById('pass-verify').value;
+    if(nombre == '' && email == '' && pass == '' && pass_verify == ''){
+        document.getElementById('nombre').style.border = '2px solid red';
+        document.getElementById('mail-user').style.border = '2px solid red';
+        document.getElementById('pass').style.border = '2px solid red';
+        document.getElementById('pass-verify').style.border = '2px solid red';
+        document.getElementById('alerta').style.display = 'block';
+        document.getElementById('alerta').innerHTML = 'Introduce los datos solicitados';
+    }else if(nombre == ''){
+        document.getElementById('nombre').style.border = '2px solid red';
+        document.getElementById('mail-user').style.border = '0.5px solid black';
+        document.getElementById('pass').style.border = '0.5px solid black';
+        document.getElementById('pass-verify').style.border = '0.5px solid black';
+        document.getElementById('alerta').style.display = 'block';
+        document.getElementById('alerta').innerHTML = 'Introduce los datos solicitados';
+    }else if(email == ''){
+        document.getElementById('nombre').style.border = '0.5px solid black';
+        document.getElementById('mail-user').style.border = '2px solid red';
+        document.getElementById('pass').style.border = '0.5px solid black';
+        document.getElementById('pass-verify').style.border = '0.5px solid black';
+        document.getElementById('alerta').style.display = 'block';
+        document.getElementById('alerta').innerHTML = 'Introduce los datos solicitados';
+    }else if(pass != pass_verify){
+        document.getElementById('nombre').style.border = '0.5 solid black';
+        document.getElementById('mail-user').style.border = '0.5 solid black';
+        document.getElementById('pass').style.border = '2px solid red';
+        document.getElementById('pass-verify').style.border = '2px solid red';
+        document.getElementById('alerta').style.display = 'block';
+        document.getElementById('alerta').innerHTML = 'Las contraseñas no coinciden';
+    }else{
+        ActualizarUser(userid);
+        RellenarModificar(userid);
+    }
+}
+
+function ActualizarUser(userid){
+    alert("hola");
+}
+
+//Mapa
+//Activa o Desactiva el div del mapa
+function ActivarMapa(){
+    var mostrar = document.getElementById('bot_mostrar').value;
+    if (mostrar==0){
+        document.getElementById('bot_mostrar').innerHTML = "Ocultar Mapa";
+        var buscar = document.getElementById('map').style.display = "block";
+        document.getElementById('bot_mostrar').value=1;
+        CargarMapa();
+    }else{
+       document.getElementById('bot_mostrar').innerHTML = "Mostrar Mapa";
+       var buscar = document.getElementById('map').style.display = "none";
+        document.getElementById('bot_mostrar').value=0; 
+    }
+}
+function CargarMapa() {
+    // inicializamos el mapa en el div "mapid" en las coordenadas dadas y a zoom 13
+ var map = L.map('map').setView([40.91, -96.63], 4);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  var searchControl = L.esri.Geocoding.geosearch().addTo(map);
+
+  var results = L.layerGroup().addTo(map);
+
+  searchControl.on('results', function (data) {
+    results.clearLayers();
+    for (var i = data.results.length - 1; i >= 0; i--) {
+      results.addLayer(L.marker(data.results[i].latlng));
+    }
+  });
+  var popup = L.popup();
+   function onMapClick(e) {
+      popup
+        .setLatLng(e.latlng)
+        .setContent("Has clicado el mapa en " + e.latlng.toString())
+        .openOn(map);
+    }
+    // aqui relacionamos el evento click con la funcion que acabamos de crear
+    map.on('click', onMapClick);
 }
  
 

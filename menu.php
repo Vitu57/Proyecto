@@ -17,7 +17,7 @@
       			<!-- Primera opcion -->
         		<li class="list-group-item py-2">
                                 <!-- Redireccionamiento correspondiente al elemento -->
-        			<a href="logout.php">
+                                <a href="modificar_user.php">
         				<!-- Imagen del menu y texto que se muestra cuando se desplega -->
                                         <img src="imagenes_pag/modificar_user.png" height="40" class="mr-4"><span>Modificar Perfil</span>
         			</a>
