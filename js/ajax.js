@@ -164,14 +164,22 @@ function ActualizarContacto(userid){
     var foto = document.getElementById('foto').value
     var dir1 = document.getElementById('dir1').value
     var dir2 = document.getElementById('dir2').value
+    var contador = document.getElementById('contador').value
+    var enviar ="";
+    for (var i = 0; i < contador; i++) {
+        var telefono=document.getElementById("telefono"+i).value;
+        var tipo_telefono=document.getElementById("tipo_tlf"+i).value;
+        enviar =enviar+"&telefono"+i+"="+telefono+"&tipo_tlf"+i+"="+tipo_telefono;
+        }
     var img_perf=foto.substr(12, foto.length);
     var ajax2=objetoAjax();
 	ajax2.open("POST", "services/modificar_contacto.php", true);
         ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax2.send("userid="+userid+"&nombre="+nombre+"&apellidos="+apellidos+"&telefono="+telefono+"&foto="+img_perf+"&mail="+email+"&dir1="+dir1+"&dir2="+dir2);
+        ajax2.send("userid="+userid+"&nombre="+nombre+"&apellidos="+apellidos+"&telefono="+telefono+"&foto="+img_perf+"&mail="+email+"&dir1="+dir1+"&dir2="+dir2+enviar);
 	ajax2.onreadystatechange=function() {
 		if (ajax2.readyState==4 && ajax2.status==200) {
                     RellenarModificar(userid);
+                    alert(contador);
                 }
             }
 }

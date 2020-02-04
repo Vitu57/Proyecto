@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-02-2020 a las 19:45:30
+-- Tiempo de generación: 04-02-2020 a las 17:18:23
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -45,8 +45,7 @@ CREATE TABLE `tbl_contacto` (
 --
 
 INSERT INTO `tbl_contacto` (`id_contacto`, `nombre_contacto`, `apellidos_contacto`, `email_contacto`, `telefono_contacto`, `imagen_contacto`, `direccion1_contacto`, `direccion2_contacto`, `fk_id_user`) VALUES
-(1, 'Victor', 'Perez', 'victor@gmail.com', 0, 'default.png', 'av.europa', 'av. carmen amaya', 3),
-(2, 'Ivan', 'Garcia', 'ivan@gmail.com', 0, 'default.png', 'c/francia bellvitge', 'av. europa', 3),
+(2, 'Ivan', 'Garcia', '', 987654321, 'default.png', '', '', 3),
 (8, 'Oscar', 'Gonzalez', 'vic@gmail.com', 0, 'perfil3.png', 'C/Girona Prat De Llobregat', 'Av.Remolars Barcelona', 3),
 (9, 'Gerard', 'Pazos', 'ur@gmail.com', 0, 'perfil1.png', 'C/Estels Barcelona', 'Av.Campana Barcelona', 3),
 (10, 'Marc', 'Garcia', 'random@gmail.com', 0, 'perfil4.png', 'C/Margarides Viladecans', 'C/Manresa Girona', 3),
@@ -65,6 +64,14 @@ CREATE TABLE `tbl_telefono` (
   `tipo_telefono` varchar(40) NOT NULL,
   `fk_id_contacto` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tbl_telefono`
+--
+
+INSERT INTO `tbl_telefono` (`id_telefono`, `num_telefono`, `tipo_telefono`, `fk_id_contacto`) VALUES
+(16, 51671627, 'telefono', 2),
+(17, 987654321, 'movil', 2);
 
 -- --------------------------------------------------------
 
@@ -102,6 +109,7 @@ ALTER TABLE `tbl_contacto`
 -- Indices de la tabla `tbl_telefono`
 --
 ALTER TABLE `tbl_telefono`
+  ADD PRIMARY KEY (`id_telefono`),
   ADD KEY `fk_id_contacto` (`fk_id_contacto`);
 
 --
@@ -119,6 +127,12 @@ ALTER TABLE `tbl_usuario`
 --
 ALTER TABLE `tbl_contacto`
   MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_telefono`
+--
+ALTER TABLE `tbl_telefono`
+  MODIFY `id_telefono` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario`
