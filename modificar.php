@@ -11,10 +11,12 @@
     </script>
     <script type="text/javascript" src="js/ajax.js">
     </script>
+    <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
     <header></header><br>
     <?php 
     include 'header.php';
     $id_user=$_GET["id"];
+ 
     ?>
     <body onload="RellenarModificar(<?php echo $id_user; ?>)">
         <div style="position: relative; margin: auto; width: 50%;">
@@ -25,7 +27,8 @@
                 <label>Apellidos:</label><br>
                 <input type="text" name="apellidos" id="apellidos"><br>
                 <label>Teléfono:</label><br>
-                <input type="text" name="telefono" id="telefono"><br>
+                <input type="text" name="telefono" id="telefono"><a onclick="AñadirTlf() "><i class="fas fa-plus-circle" style="color:blue;" ></i></a><br>
+                <div id="telefonos"></div>
                 <label>Email:</label><br>
                 <input type="email" name="email" id="email"><br>
                 <label>Foto de perfil(opcional)</label><br>
@@ -35,6 +38,8 @@
                 <label>Direccion 2</label><br>
                 <input type="text" name="dir2" id="dir2"><br><br>
                 <button>Actualizar Datos</button>
+                <input type="text" value="1" hidden="" id="contador">
+                
             </form>
         </div>
     </body>

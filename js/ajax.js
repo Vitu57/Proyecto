@@ -260,6 +260,18 @@ function ActualizarUser(userid){
     
 }
 
+
+function AñadirTlf(){
+   var contador = document.getElementById('contador').value;
+   var telefonos = "";
+   for (var i = 0; i < contador; i++) {
+       telefonos=telefonos+"<select name='tipo_tlf"+i+"'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select><input type='text' name='telefono"+i+"' id='telefono"+i+"'><br>";
+   }
+   var numero=parseInt(contador);
+   document.getElementById('telefonos').innerHTML = telefonos;
+   document.getElementById('contador').value = numero+1;
+}
+
 //Mapa:
 
 //Activa o Desactiva el div del mapa
