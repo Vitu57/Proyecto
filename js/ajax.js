@@ -164,22 +164,14 @@ function ActualizarContacto(userid){
     var foto = document.getElementById('foto').value
     var dir1 = document.getElementById('dir1').value
     var dir2 = document.getElementById('dir2').value
-    var contador = document.getElementById('contador').value
-    var enviar ="";
-    for (var i = 0; i < contador; i++) {
-        var telefono=document.getElementById("telefono"+i).value;
-        var tipo_telefono=document.getElementById("tipo_tlf"+i).value;
-        enviar =enviar+"&telefono"+i+"="+telefono+"&tipo_tlf"+i+"="+tipo_telefono;
-        }
     var img_perf=foto.substr(12, foto.length);
     var ajax2=objetoAjax();
 	ajax2.open("POST", "services/modificar_contacto.php", true);
         ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax2.send("userid="+userid+"&nombre="+nombre+"&apellidos="+apellidos+"&telefono="+telefono+"&foto="+img_perf+"&mail="+email+"&dir1="+dir1+"&dir2="+dir2+enviar);
+        ajax2.send("userid="+userid+"&nombre="+nombre+"&apellidos="+apellidos+"&telefono="+telefono+"&foto="+img_perf+"&mail="+email+"&dir1="+dir1+"&dir2="+dir2);
 	ajax2.onreadystatechange=function() {
 		if (ajax2.readyState==4 && ajax2.status==200) {
                     RellenarModificar(userid);
-                    alert(contador);
                 }
             }
 }
@@ -279,6 +271,22 @@ function AñadirTlf(){
    document.getElementById('telefonos').innerHTML = telefonos;
    document.getElementById('contador').value = numero+1;
 }
+//Eliminar una cuenta de usuario
+function EliminarCuenta(userid){
+    var confirmacion = confirm("Estas seguro de eliminar tu cuenta? Todos tus contactos se perderán");
+    if (confirmacion == true){
+        var ajax2=objetoAjax();
+    ajax2.open("POST", "services/eliminar_user.php", true);
+        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax2.send("userid="+userid);
+    ajax2.onreadystatechange=function() {
+            if (ajax2.readyState==4 && ajax2.status==200) {
+                alert("Eliminación de cuenta con éxito")
+                location.href='logout.php';
+            }
+        }
+    }
+}
 
 //Mapa:
 
@@ -297,9 +305,15 @@ function ActivarMapa(){
     }
 }
 
-function CargarMapa() {
+/*function CargarMapa() {
     // inicializamos el mapa en el div "mapid" en las coordenadas dadas y a zoom 13
- var map = L.map('map').setView([40.91, -96.63], 4);
+ var map = L.map('map').setView([41.353, 2.107058], 13);
+ var direccion = L.marker([41.353, 2.107058], {
+title: "recoger de base de datos",
+draggable:false,
+opacity: 1
+}).bindPopup("<b>recoger de la base de datos</b>")
+.addTo(map);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -326,21 +340,55 @@ function CargarMapa() {
     map.on('click', onMapClick);
 }
 
-//Eliminar una cuenta de usuario
-function EliminarCuenta(userid){
-    var confirmacion = confirm("Estas seguro de eliminar tu cuenta? Todos tus contactos se perderán");
-    if (confirmacion == true){
-        var ajax2=objetoAjax();
-	ajax2.open("POST", "services/eliminar_user.php", true);
-        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax2.send("userid="+userid);
-	ajax2.onreadystatechange=function() {
-            if (ajax2.readyState==4 && ajax2.status==200) {
-                alert("Eliminación de cuenta con éxito")
-                location.href='logout.php';
-            }
-        }
-    }
-}
+*/
  
+
+
+ function CargarMapa() {
+    // inicializamos el mapa en el div "mapid" en las coordenadas dadas y a zoom 13
+ var map = L.map('map').setView([41.353, 2.107058], 13);
+ var direccion = L.marker([41.353, 2.107058], {
+title: "recoger de base de datos",
+draggable:false,
+opacity: 1
+}).bindPopup("<b>recoger de la base de datos</b>")
+.addTo(map);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  var searchControl = L.esri.Geocoding.geosearch().addTo(map);
+
+  var results = L.layerGroup().addTo(map);
+
+  searchControl.on('results', function (data) {
+    results.clearLayers();
+    for (var i = data.results.length - 1; i >= 0; i--) {
+      results.addLayer(L.marker(data.results[i].latlng));
+    }
+  });
+  var popup = L.popup();
+
+   function onMapClick(e) {
+      popup
+        .setLatLng(e.latlng)
+        .setContent("Has clicado el mapa en " + e.latlng.toString())
+        .openOn(map);
+        prueba=e.LatLng;
+        coordenadas = prueba.replace(LatLng,'');
+
+         var direccion = L.marker([41.353, 2.107058], {
+            title: "recoger de base de datos",
+            draggable:false,
+            opacity: 1
+            }).bindPopup("<b>recoger de la base de datos</b>")
+            .addTo(map);
+        var latitud =e.latlng;
+        alert(latitud);
+    }
+    // aqui relacionamos el evento click con la funcion que acabamos de crear
+    map.on('click', onMapClick);
+}
+
 
