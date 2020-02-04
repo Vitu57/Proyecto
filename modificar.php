@@ -15,28 +15,37 @@
     <header></header><br>
     <?php 
     include 'header.php';
+    include 'services/conexion.php';
     $id_user=$_GET["id"];
- 
+
+    $sqlimg = "SELECT imagen_contacto FROM tbl_contacto WHERE id_contacto LIKE $id_user;"; 
+    $consulta=mysqli_query($conn,$sqlimg);
+    $row=mysqli_fetch_array($consulta);
+
     ?>
-    <body onload="RellenarModificar(<?php echo $id_user; ?>)">
+    <body class="modificar-contacts-body" onload="RellenarModificar(<?php echo $id_user; ?>)">
         <div style="position: relative; margin: auto; width: 50%;">
             <a href="home.php" style="float: right;"><button>Volver</button></a>
             <form id='modificar' method='post' accept-charset='UTF-8' onsubmit = "ValidacionModificar(<?php echo $id_user; ?>); return false;">
-                <label>Nombre:</label><br>
+                
+                <!-- <input type="" name="imagen-perfil" id="imagen-perfil"> -->
+
+                <label for="foto" class=""><center><img style="object-fit: cover; margin-bottom: 30%" src="./img/<?php echo $row['imagen_contacto']?>"></center></label>
+                <!-- <label>Nombre:</label><br> -->
                 <input type="text" name="nombre" id="nombre"><br>
-                <label>Apellidos:</label><br>
+                <!-- <label>Apellidos:</label><br> -->
                 <input type="text" name="apellidos" id="apellidos"><br>
-                <label>Teléfono:</label><br>
+                <!-- <label>Teléfono:</label><br> -->
                 <input type="text" name="telefono" id="telefono"><br>
-                <label>Email:</label><br>
-                <input type="email" name="email" id="email"><br>
-                <label>Foto de perfil(opcional)</label><br>
+                <!-- <label>Email:</label><br> -->
+                <input type="email" name="email" id="email">
+                <!-- <label>Foto de perfil(opcional)</label><br> -->
                 <input type="file" name="foto" id="foto"><br>
-                <label>Dirección 1</label><br>
+                <!-- <label>Dirección 1</label><br> -->
                 <input type="text" name="dir1" id="dir1"><br>
-                <label>Direccion 2</label><br>
+                <!-- <label>Direccion 2</label><br> -->
                 <input type="text" name="dir2" id="dir2"><br><br>
-                <button>Actualizar Datos</button>
+                <button class="btn-rosa">Actualizar Datos</button>
                 <input type="text" value="1" hidden="" id="contador">
                 
             </form>

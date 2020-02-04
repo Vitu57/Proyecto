@@ -134,6 +134,8 @@ function limpiar(){
                         document.getElementById('email').value = respuesta2[i].email_contacto;
                         document.getElementById('dir1').value = respuesta2[i].direccion1_contacto;
                         document.getElementById('dir2').value = respuesta2[i].direccion2_contacto;
+                        document.getElementById('imagen-perfil').value = respuesta2[i].imagen_contacto;
+
                     }
                 }
             }

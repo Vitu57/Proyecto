@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color: #fcfaf2;">
     <head>
         <title>MyContacts</title>
         <meta charset="UTF-8">

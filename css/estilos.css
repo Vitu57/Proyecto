@@ -62,6 +62,9 @@ button {
   font-display: swap;
   src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf) format('truetype');
 }
+p {
+  font-family: Arial;
+}
 .btn-rosa {
   background-color: #557dd6;
   border: 0;
@@ -302,4 +305,31 @@ input[type="file"] {
   border-radius: 25px;
   padding: 10px 15px;
   margin-bottom: 3%;
+}
+.modificar-contacts-body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.modificar-contacts-body #modificar {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.modificar-contacts-body #modificar input {
+  width: 100%;
+  background-color: #e2e2e2;
+  border: 1px solid #bdbdbd;
+  border-radius: 25px;
+  padding: 10px 15px;
+  margin-bottom: 2%;
+}
+.modificar-contacts-body #modificar img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  margin-bottom: 5%;
 }
