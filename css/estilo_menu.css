@@ -1,0 +1,62 @@
+/*Barra de navegación*/
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
+
+[data-component='sidebar'] .sidebar {
+position: fixed;
+    z-index: 9999;
+    font-family: 'Open Sans', sans-serif;
+}
+[data-component='sidebar'] .first-menu {
+    position: fixed;
+    background-color: #dedede;
+    height: 100vw;
+    width: 30px;
+    top: -16px;
+    left: 0px;
+    overflow: hidden;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+
+}
+[data-component='sidebar'] .first-menu .list-group-item {
+      border-right: 0;
+      list-style:none;
+      margin-top:15px;
+      margin-left:-30px;
+      text-align:left;
+
+}
+[data-component='sidebar'] .first-menu .list-group-item:not(last-child) {
+  border-bottom: 0;
+  padding-top:  5px;
+  padding-left: 5px;
+
+}
+[data-component='sidebar'] .first-menu .list-group-item:hover {
+        background-color: #c5c5c5;
+
+}
+[data-component='sidebar'] .first-menu a {
+  white-space: nowrap;
+  color: grey;
+  font-weight: 400;
+  font-size: 0.875em;
+  text-decoration: none;
+  margin-top: 10px;
+}
+[data-component='sidebar'] .first-menu a span {
+  opacity: 0;
+  visibility: hidden;
+  padding:10px;
+  vertical-align: 75%;
+
+}
+[data-component='sidebar'] .first-menu:hover span {
+  opacity: 1;
+  visibility: visible;
+}
+[data-component='sidebar'] .first-menu:hover {
+  width: 200px;
+}

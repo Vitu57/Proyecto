@@ -1,0 +1,305 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    // overflow-y: hidden;
+}
+
+textarea, select, input, button { 
+    outline: none;
+}
+:focus { 
+    outline-color: transparent; 
+    outline-style: none;
+}
+
+.login {
+        // Background GRADIENT:
+
+        background: linear-gradient(270deg, #557dd6, #261771, #557dd6);
+        background-size: 600% 600%;
+        
+        -webkit-animation: AnimationName 30s ease infinite;
+        -moz-animation: AnimationName 30s ease infinite;
+        animation: AnimationName 30s ease infinite;
+        
+        @-webkit-keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @-moz-keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+    
+}
+
+///////////// Importar fuentes: /////////////////
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+///////////// Estilos de botones: ///////////////
+
+.btn-rosa {
+    background-color: #557dd6;
+    border: 0;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    width: 48%;
+    &:hover {
+        background-color: #405fa2;
+    }
+}
+
+.btn-amarillo {
+    background-color: #f9d15f;
+    border: 0;
+    padding: 10px;
+    color: #3a3a3a;
+    border-radius: 3px;
+    width: 48%;
+    &:hover {
+        background-color: #e6c157;
+    }
+}
+
+.btn-despl-rosa {
+    z-index: 10;
+    position: fixed;
+    right: 2vw;
+    bottom: 4vh;
+    background-color: #557dd6;
+    padding: 10px 17px;
+    font-size: 25px;
+    border-radius: 50%;
+    color: white;
+    transition: 0.4s;
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+///////////// Estilos titulos //////////////
+
+.titulo-blanco {
+    font-family: Montserrat;
+    font-weight: 100;
+    color: white;
+}
+
+.titulo-negro {
+    font-family: Montserrat;
+    font-weight: 100;
+    color: black;
+}
+
+///////////// PÁGINA LOGIN: //////////////
+
+header {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    img {
+        margin-right: 3%;
+    }
+}
+
+.login {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    .contenido-login {
+        background-color: rgba(255, 255, 255, 0.4);
+        padding: 5%;
+        border-radius: 5px;
+        width: 30%;
+
+        .cont-formulario {
+            form {
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                input {
+                    background-color: hsla(0, 0%, 100%, 0.42);
+                    border: 0;
+                    border-radius: 3px;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                    color: black;
+                }
+
+                .botones-login {
+                    display: flex;
+                    flex-flow: row;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+
+///////////////////////////////////////
+// TABLA CONTACTOS:
+
+.cont-tabla-contactos {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    .resultado-tabla {
+        width: 90%;
+        margin-left: 8%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        table {
+            font-family: 'Montserrat';
+            font-size: 12px;
+            width: 100%;
+            border-spacing: 0!important;
+            tr {
+                height: 70px;
+                background: transparent;
+                transition: 0.4s;
+                &:hover {
+                    background: #dedede;
+                }
+                &:nth-child(1) {
+                    // position: sticky;
+                    &:hover {
+                        background: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.despl-add-contactos.desp-activado {
+    box-shadow: 0 0 10px 0px #989898;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    padding: 2%;
+    background-color: #dedede;
+    position: fixed;
+    right: 7vw;
+    bottom: 7vh;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    opacity: 1;
+    transition: 0.4s;
+    z-index: 10;
+    form {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+    input.inp {
+        width: 100%;
+        margin-bottom: 10px;
+        background-color: #ffffff4a;
+        border: 0;
+        border-radius: 25px;
+        padding: 7px;    
+    }
+}
+
+.despl-add-contactos.desp-desactivado {
+    opacity: 0;
+    z-index: -1000;
+    margin-left: 101vw;
+    display: none;
+    // margin-top: 101vh;
+}
+
+///////////////////////////////////////////
+// ESTILOS MAPA
+
+#map { 
+    position: relative; 
+    box-shadow: rgb(181, 181, 181) 0px 0px 10px 1px;
+    top:20px; 
+    bottom:0; 
+    right:0; 
+    left:0; 
+    min-height:300px;
+    max-height: 400px; 
+    // margin-top: 20%;
+    z-index: 1;
+    width: 95%;
+    margin-left: 5%;
+}
+
+
+///////////////////////////////////////////
+// BUSCADOR
+
+#buscar {
+    form {
+        margin-left: 18vw;
+        margin-bottom: 5vh;
+        margin-top: 5vh;
+        input {
+            width: 40%;
+            background-color: #e2e2e2;
+            border: 1px solid #bdbdbd;
+            border-radius: 25px;
+            padding: 10px 15px;
+        }
+    }
+}
+
+
+//////////////////////////////////////
+// LOGO
+
+.logo {
+    img {
+        position: absolute;
+        top: 2vh;
+        right: 1vw;
+        width: 100%;
+        max-width: 70px;
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    background-color: #557dd6;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 15px;
+    color: white;
+    cursor: pointer;
+    font-family: 'Arial';
+    font-size: 12px;
+    &:hover {
+        background-color: #405fa2;
+    }
+}
