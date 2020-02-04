@@ -16,8 +16,8 @@
     include 'header.php';
     ?>
     <body class="modificar-users-body" onload="RellenarModificarUser(<?php echo $userid;?>)">
-        <div style="position: relative; margin: auto; width: 50%;">
-            <a href="home.php" style="float: right;"><button class="btn-rosa" style="width: 100%;">Volver</button></a><br><br><br>
+        <div style="width: 50%; display: flex; flex-flow: row wrap; align-items: center">
+            <h1 class="titulo-negro" style="width: 50%;">Modificar usuario</h1><a href="home.php" style="margin-left: 40%"><button class="btn-rosa" style="width: 100%; float: right">Volver</button></a>
             <form id='modificar' method='post' accept-charset='UTF-8' onsubmit = "ValidacionModificarUser(<?php echo $userid; ?>); return false;">
                 <p id="alerta" style="display: none;"></p>
                 <!-- <label>Email:</label><br> -->
