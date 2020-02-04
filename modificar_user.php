@@ -31,7 +31,7 @@
                 <label>Verificar Contraseña:</label><br>
                 <input type="password" name="pass-verify" id="pass-verify"><br><br>
                 <button>Actualizar Datos</button>
-                <a href="eliminar_user.php" style="float: right;"><button>Eliminar Cuenta</button></a>
+                <a onclick="EliminarCuenta(<?php echo $userid;?>); return false" style="float: right;"><button>Eliminar Cuenta</button></a>
             </form>
         </div>
     </body>

@@ -188,6 +188,9 @@ function RellenarModificarUser(userid){
                     for (var i = 0; i < respuesta2.length; i++) {
                         document.getElementById('mail-user').value = respuesta2[i].email_user;
                         document.getElementById('nombre').value = respuesta2[i].nombre_user;
+                        document.getElementById('pass_ant').value="";
+                        document.getElementById('pass').value="";
+                        document.getElementById('pass-verify').value="";
                         
                     }
                 }
@@ -208,28 +211,27 @@ function ValidacionModificarUser(userid){
         document.getElementById('alerta').innerHTML = 'Introduce los datos solicitados';
     }else if(nombre == ''){
         document.getElementById('nombre').style.border = '2px solid red';
-        document.getElementById('mail-user').style.border = '0.5px solid black';
-        document.getElementById('pass').style.border = '0.5px solid black';
-        document.getElementById('pass-verify').style.border = '0.5px solid black';
+        document.getElementById('mail-user').style.border = '1px solid #ccc';
+        document.getElementById('pass').style.border = '1px solid #ccc';
+        document.getElementById('pass-verify').style.border = '0.1px solid #ccc';
         document.getElementById('alerta').style.display = 'block';
         document.getElementById('alerta').innerHTML = 'Introduce los datos solicitados';
     }else if(email == ''){
-        document.getElementById('nombre').style.border = '0.5px solid black';
+        document.getElementById('nombre').style.border = '1px solid #ccc';
         document.getElementById('mail-user').style.border = '2px solid red';
-        document.getElementById('pass').style.border = '0.5px solid black';
-        document.getElementById('pass-verify').style.border = '0.5px solid black';
+        document.getElementById('pass').style.border = '1px solid #ccc';
+        document.getElementById('pass-verify').style.border = '0.1px solid #ccc';
         document.getElementById('alerta').style.display = 'block';
         document.getElementById('alerta').innerHTML = 'Introduce los datos solicitados';
     }else if(pass != pass_verify){
-        document.getElementById('nombre').style.border = '0.5 solid black';
-        document.getElementById('mail-user').style.border = '0.5 solid black';
+        document.getElementById('nombre').style.border = '1px solid #ccc';
+        document.getElementById('mail-user').style.border = '1px solid #ccc';
         document.getElementById('pass').style.border = '2px solid red';
         document.getElementById('pass-verify').style.border = '2px solid red';
         document.getElementById('alerta').style.display = 'block';
         document.getElementById('alerta').innerHTML = 'Las contraseñas no coinciden';
     }else{
         ActualizarUser(userid);
-        RellenarModificar(userid);
     }
 }
 
@@ -241,16 +243,25 @@ function ActualizarUser(userid){
     var ajax2=objetoAjax();
 	ajax2.open("POST", "services/modificar_user.php", true);
         ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax2.send("userid="+userid+"&nombre="+nombre+"&mail="+mail+"&pass="+pass);
+        ajax2.send("userid="+userid+"&nombre="+nombre+"&mail="+mail+"&pass="+pass+"&pass_ant="+pass_ant);
 	ajax2.onreadystatechange=function() {
 		if (ajax2.readyState==4 && ajax2.status==200) {
-                  document.getElementById('alerta').innerHTML = 'Actualización con éxito';  
+                    var respuesta=JSON.parse(this.responseText);
+                    if(respuesta==1){
+                        alert("Actualizacion con exito");
+                        RellenarModificarUser(userid);
+                    }else{
+                        alert("La contraseña anterior no coincide");
+                        RellenarModificarUser(userid);
+                    }
+                    //document.getElementById('alerta').innerHTML = 'Actualización con éxito';  
                 }
             }
     
 }
 
-//Mapa
+//Mapa:
+
 //Activa o Desactiva el div del mapa
 function ActivarMapa(){
     var mostrar = document.getElementById('bot_mostrar').value;
@@ -265,6 +276,7 @@ function ActivarMapa(){
         document.getElementById('bot_mostrar').value=0; 
     }
 }
+
 function CargarMapa() {
     // inicializamos el mapa en el div "mapid" en las coordenadas dadas y a zoom 13
  var map = L.map('map').setView([40.91, -96.63], 4);
@@ -292,6 +304,23 @@ function CargarMapa() {
     }
     // aqui relacionamos el evento click con la funcion que acabamos de crear
     map.on('click', onMapClick);
+}
+
+//Eliminar una cuenta de usuario
+function EliminarCuenta(userid){
+    var confirmacion = confirm("Estas seguro de eliminar tu cuenta? Todos tus contactos se perderán");
+    if (confirmacion == true){
+        var ajax2=objetoAjax();
+	ajax2.open("POST", "services/eliminar_user.php", true);
+        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax2.send("userid="+userid);
+	ajax2.onreadystatechange=function() {
+            if (ajax2.readyState==4 && ajax2.status==200) {
+                alert("Eliminación de cuenta con éxito")
+                location.href='logout.php';
+            }
+        }
+    }
 }
  
 
