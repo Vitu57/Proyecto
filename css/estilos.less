@@ -56,8 +56,22 @@ textarea, select, input, button {
     color: white;
     border-radius: 3px;
     width: 48%;
+    cursor: pointer;
     &:hover {
         background-color: #405fa2;
+    }
+}
+
+.btn-rojo {
+    background-color: #d44f4f;
+    border: 0;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    width: 48%;
+    cursor: pointer;
+    &:hover {
+        background-color: #9c3838;
     }
 }
 
@@ -68,6 +82,7 @@ textarea, select, input, button {
     color: #3a3a3a;
     border-radius: 3px;
     width: 48%;
+    cursor: pointer;
     &:hover {
         background-color: #e6c157;
     }
@@ -84,6 +99,7 @@ textarea, select, input, button {
     border-radius: 50%;
     color: white;
     transition: 0.4s;
+    cursor: pointer;
     &:hover {
         transform: scale(1.2);
     }
@@ -301,5 +317,33 @@ input[type="file"] {
     font-size: 12px;
     &:hover {
         background-color: #405fa2;
+    }
+}
+
+
+///////////////////////////////////////
+//  MODIFICAR USER:
+
+
+
+.modificar-users-body {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    #modificar {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center;
+        input {
+            width: 100%;
+            background-color: #e2e2e2;
+            border: 1px solid #bdbdbd;
+            border-radius: 25px;
+            padding: 10px 15px;
+            margin-bottom: 3%;
+        }
+
     }
 }

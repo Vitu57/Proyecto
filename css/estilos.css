@@ -69,9 +69,22 @@ button {
   color: white;
   border-radius: 3px;
   width: 48%;
+  cursor: pointer;
 }
 .btn-rosa:hover {
   background-color: #405fa2;
+}
+.btn-rojo {
+  background-color: #d44f4f;
+  border: 0;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+  width: 48%;
+  cursor: pointer;
+}
+.btn-rojo:hover {
+  background-color: #9c3838;
 }
 .btn-amarillo {
   background-color: #f9d15f;
@@ -80,6 +93,7 @@ button {
   color: #3a3a3a;
   border-radius: 3px;
   width: 48%;
+  cursor: pointer;
 }
 .btn-amarillo:hover {
   background-color: #e6c157;
@@ -95,6 +109,7 @@ button {
   border-radius: 50%;
   color: white;
   transition: 0.4s;
+  cursor: pointer;
 }
 .btn-despl-rosa:hover {
   transform: scale(1.2);
@@ -267,4 +282,24 @@ input[type="file"] {
 }
 .custom-file-upload:hover {
   background-color: #405fa2;
+}
+.modificar-users-body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.modificar-users-body #modificar {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.modificar-users-body #modificar input {
+  width: 100%;
+  background-color: #e2e2e2;
+  border: 1px solid #bdbdbd;
+  border-radius: 25px;
+  padding: 10px 15px;
+  margin-bottom: 3%;
 }
