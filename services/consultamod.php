@@ -10,5 +10,9 @@
   while($row = mysqli_fetch_assoc($sql)){
     $contactos[]=$row;
   }
+  
+  while($row = mysqli_fetch_assoc($sql)){
+    $telefonos[]=$row;
+  }
   print json_encode($contactos);
 ?>

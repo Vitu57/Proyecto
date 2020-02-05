@@ -39,7 +39,7 @@ function CrearTabla(userid){
                             tabla += '<td>' + '<img style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" src="img/' + respuesta2[i].imagen_contacto + '">' + '</td>';
                             tabla += '<td>' + respuesta2[i].nombre_contacto+ "</td>";
                             tabla += '<td>' + respuesta2[i].apellidos_contacto+ "</td>";
-                            tabla += '<td>' + respuesta2[i].telefono_contacto+ "</td>";
+                            tabla += '<td>' + respuesta2[i].telefono_contacto+ '<a style="padding-left:5px;" title="Teléfonos adicionales" href="#myModal" onclick="RellenarTlf('+respuesta2[i].id_contacto+');"><i class="fas fa-plus-circle" style="color:blue;" ></i></a></td>';
                             tabla += '<td>' + respuesta2[i].email_contacto+ "</td>";
                             tabla += '<td>' + respuesta2[i].direccion1_contacto+ "</td>";
                             tabla += '<td>' + respuesta2[i].direccion2_contacto+ "</td>";
@@ -134,8 +134,7 @@ function limpiar(){
                         document.getElementById('email').value = respuesta2[i].email_contacto;
                         document.getElementById('dir1').value = respuesta2[i].direccion1_contacto;
                         document.getElementById('dir2').value = respuesta2[i].direccion2_contacto;
-                        document.getElementById('imagen-perfil').value = respuesta2[i].imagen_contacto;
-
+                        //'C:\fakepath\\' + respuesta2[i].imagen_contacto;
                     }
                 }
             }
@@ -262,34 +261,6 @@ function ActualizarUser(userid){
     
 }
 
-
-function AñadirTlf(){
-   var contador = document.getElementById('contador').value;
-   var telefonos = "";
-   for (var i = 0; i < contador; i++) {
-       telefonos=telefonos+"<select name='tipo_tlf"+i+"'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select><input type='text' name='telefono"+i+"' id='telefono"+i+"'><br>";
-   }
-   var numero=parseInt(contador);
-   document.getElementById('telefonos').innerHTML = telefonos;
-   document.getElementById('contador').value = numero+1;
-}
-//Eliminar una cuenta de usuario
-function EliminarCuenta(userid){
-    var confirmacion = confirm("Estas seguro de eliminar tu cuenta? Todos tus contactos se perderán");
-    if (confirmacion == true){
-        var ajax2=objetoAjax();
-    ajax2.open("POST", "services/eliminar_user.php", true);
-        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax2.send("userid="+userid);
-    ajax2.onreadystatechange=function() {
-            if (ajax2.readyState==4 && ajax2.status==200) {
-                alert("Eliminación de cuenta con éxito")
-                location.href='logout.php';
-            }
-        }
-    }
-}
-
 //Mapa:
 
 //Activa o Desactiva el div del mapa
@@ -307,15 +278,9 @@ function ActivarMapa(){
     }
 }
 
-/*function CargarMapa() {
+function CargarMapa() {
     // inicializamos el mapa en el div "mapid" en las coordenadas dadas y a zoom 13
- var map = L.map('map').setView([41.353, 2.107058], 13);
- var direccion = L.marker([41.353, 2.107058], {
-title: "recoger de base de datos",
-draggable:false,
-opacity: 1
-}).bindPopup("<b>recoger de la base de datos</b>")
-.addTo(map);
+ var map = L.map('map').setView([40.91, -96.63], 4);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -342,55 +307,80 @@ opacity: 1
     map.on('click', onMapClick);
 }
 
-*/
+//Eliminar una cuenta de usuario
+function EliminarCuenta(userid){
+    var confirmacion = confirm("Estas seguro de eliminar tu cuenta? Todos tus contactos se perderán");
+    if (confirmacion == true){
+        var ajax2=objetoAjax();
+	ajax2.open("POST", "services/eliminar_user.php", true);
+        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax2.send("userid="+userid);
+	ajax2.onreadystatechange=function() {
+            if (ajax2.readyState==4 && ajax2.status==200) {
+                alert("Eliminación de cuenta con éxito")
+                location.href='logout.php';
+            }
+        }
+    }
+}
+
+//Telefonos
+function RellenarTlf(userid){
+    divTelefonos = document.getElementById('telefonos');
+    divFin = document.getElementById('fin');
+    var ajax2=objetoAjax();
+	ajax2.open("POST", "services/consulta_telefonos.php", true);
+        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax2.send("userid="+userid);
+        var formulario = '<h2 style="text-align:center;">Teléfonos</h2>';
+        formulario += '<form method="post" accept-charset="UTF-8"">';
+        ajax2.onreadystatechange=function() {
+		if (ajax2.readyState==4 && ajax2.status==200) {
+                    var respuesta2=JSON.parse(this.responseText);
+                    for (var i = 0; i < respuesta2.length; i++) {
+                        formulario += "<br><select id='tipo_tlf'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select>";
+                        formulario += '<input id="tlf" type="text" value="'+respuesta2[i].num_telefono+'">';
+                        //respuesta2[i].tipo_telefono
+                    }
+                    formulario += '<input id="contador" type="hidden" value="1">';
+                    formulario += '<a style="padding-left:5px; color:blue;" onclick="AñadirTlf(); return false;"<i class="fas fa-plus-circle"></i></a></form>';
+                    divTelefonos.innerHTML=formulario;
+                    divFin.innerHTML='<a onclick="InsertarTlf('+userid+'); return false;"><button>Actualizar Teléfonos</button><a>';
+                }
+            }
+}
+
+function AñadirTlf(){
+   divTelefonosNew = document.getElementById('telefonos_nuevos');
+   var contador = document.getElementById('contador').value;
+   var contador2=2;
+   var telefonos = "";
+   for (var i = 0; i < contador; i++) {
+       telefonos=telefonos+"<select id='tipo_tlf"+contador2+"'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select><input type='text' name='telefono"+contador2+"' id='telefono"+contador2+"'><br>";
+       contador2++;
+   }
+   var numero=parseInt(contador);
+   divTelefonosNew.innerHTML = telefonos;
+   var contenido = document.getElementById('resultadoContent');
+   var height = contenido.offsetHeight;
+   var newHeight = height + 8;
+   contenido.style.height = newHeight + 'px';
+   document.getElementById('contador').value = numero+1;
+}
+
+function InsertarTlf(userid){
+    var contador = document.getElementById('contador').value;
+    var tipo_tlf = document.getElementById('tipo_tlf'+contador).value;
+    var tlf = document.getElementById('telefono'+contador).value;
+    var ajax2=objetoAjax();
+	ajax2.open("POST", "services/insertar_tlf.php", true);
+        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax2.send("userid="+userid+"&tipo="+tipo_tlf+"&tlf="+tlf);
+	ajax2.onreadystatechange=function() {
+		if (ajax2.readyState==4 && ajax2.status==200) {
+                    alert("Telefonos adicionales actualizados");
+                }
+            }
+}
  
-
-
- function CargarMapa() {
-    // inicializamos el mapa en el div "mapid" en las coordenadas dadas y a zoom 13
- var map = L.map('map').setView([41.353, 2.107058], 13);
- var direccion = L.marker([41.353, 2.107058], {
-title: "recoger de base de datos",
-draggable:false,
-opacity: 1
-}).bindPopup("<b>recoger de la base de datos</b>")
-.addTo(map);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
-
-  var searchControl = L.esri.Geocoding.geosearch().addTo(map);
-
-  var results = L.layerGroup().addTo(map);
-
-  searchControl.on('results', function (data) {
-    results.clearLayers();
-    for (var i = data.results.length - 1; i >= 0; i--) {
-      results.addLayer(L.marker(data.results[i].latlng));
-    }
-  });
-  var popup = L.popup();
-
-   function onMapClick(e) {
-      popup
-        .setLatLng(e.latlng)
-        .setContent("Has clicado el mapa en " + e.latlng.toString())
-        .openOn(map);
-        prueba=e.LatLng;
-        coordenadas = prueba.replace(LatLng,'');
-
-         var direccion = L.marker([41.353, 2.107058], {
-            title: "recoger de base de datos",
-            draggable:false,
-            opacity: 1
-            }).bindPopup("<b>recoger de la base de datos</b>")
-            .addTo(map);
-        var latitud =e.latlng;
-        alert(latitud);
-    }
-    // aqui relacionamos el evento click con la funcion que acabamos de crear
-    map.on('click', onMapClick);
-}
-
 

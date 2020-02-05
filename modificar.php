@@ -45,8 +45,8 @@
                 <input type="text" name="dir1" id="dir1"><br>
                 <!-- <label>Direccion 2</label><br> -->
                 <input type="text" name="dir2" id="dir2"><br><br>
+                <input type="hidden" name="foto_def" id="foto_def">
                 <button class="btn-rosa">Actualizar Datos</button>
-                <input type="text" value="1" hidden="" id="contador">
                 
             </form>
         </div>

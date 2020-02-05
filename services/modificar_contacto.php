@@ -14,10 +14,11 @@ include "conexion.php";
 if($foto!=''){
     move_uploaded_file($foto, "img/$foto");
     $destino="$foto";
+    $sql= mysqli_query($conn, "UPDATE `tbl_contacto` SET `nombre_contacto`='$nombre',`apellidos_contacto`='$apellidos',`telefono_contacto`='$telef',`email_contacto`='$mail',`imagen_contacto`='$destino',`direccion1_contacto`='$dir1',`direccion2_contacto`='$dir2' WHERE id_contacto=$userid");
   }else{
-    $destino="default.png"; 
+    $sql= mysqli_query($conn, "UPDATE `tbl_contacto` SET `nombre_contacto`='$nombre',`apellidos_contacto`='$apellidos',`telefono_contacto`='$telef',`email_contacto`='$mail',`direccion1_contacto`='$dir1',`direccion2_contacto`='$dir2' WHERE id_contacto=$userid"); 
   }
   
-  $sql= mysqli_query($conn, "UPDATE `tbl_contacto` SET `nombre_contacto`='$nombre',`apellidos_contacto`='$apellidos',`telefono_contacto`='$telef',`email_contacto`='$mail',`imagen_contacto`='$destino',`direccion1_contacto`='$dir1',`direccion2_contacto`='$dir2' WHERE id_contacto=$userid");
+  
   //Añadir y borrar telefonos del contacto
  

@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="css/estilos.css">
         <link rel="icon" type="image/png" href="img/logo/Logo-MyContacts.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
 
     <!-- Load Leaflet from CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
@@ -80,7 +81,15 @@
         </div>
         
         <!-- Botón añadir contactos -->
-        <button id="btndespl" class="btn-despl-rosa" onclick="desplegable(); return false">+</a>
+        <button id="btndespl" class="btn-despl-rosa" onclick="desplegable(); return false">+</a></button>
+        <div id="myModal" class="modalmask">
+                <div style="background-color: #dedede; margin-top: 100px; height: 200px;" class="modalbox movedown" id="resultadoContent">
+                    <a style="margin-left: 400px; background-color: red;color: white; border: 3px solid red" href="#" title="Close" class="close">X</a>
+                    <div id="telefonos"></div>
+                    <div id="telefonos_nuevos"></div>
+                    <div id="fin"></div>
+                </div>
+        </div>
     </body>
     
 </html>
