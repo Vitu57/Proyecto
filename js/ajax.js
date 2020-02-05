@@ -300,19 +300,22 @@ ajax2.onreadystatechange=function() {
                 
 
             for(var i=0;i<res.length;i++) {
-
+            if (res[i].latitud1!=0 && res[i].longitud1!=0) {
                  L.marker([res[i].latitud1,res[i].longitud1], {
                                     title: res[i].direccion1_contacto,
                                     draggable:false,
                                     opacity: 1
                 }).bindPopup("<p style='text-align:center;'><b>"+res[i].nombre_contacto+"</b></p>"+res[i].direccion1_contacto)
                 .addTo(map);
+            }
+             if (res[i].latitud2!=0 && res[i].longitud2!=0) {
                  L.marker([res[i].latitud2,res[i].longitud2], {
                                     title: res[i].direccion2_contacto,
                                     draggable:false,
                                     opacity: 1
                 }).bindPopup("<p style='text-align:center;'><b>"+res[i].nombre_contacto+"</b></p>"+res[i].direccion2_contacto)
                 .addTo(map);
+            }
             }
             }
         }
