@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-02-2020 a las 20:00:48
+-- Tiempo de generación: 05-02-2020 a las 19:34:46
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -36,9 +36,11 @@ CREATE TABLE `tbl_contacto` (
   `telefono_contacto` int(9) NOT NULL,
   `imagen_contacto` varchar(100) NOT NULL,
   `direccion1_contacto` varchar(100) NOT NULL,
-  `latlong1` text NOT NULL,
+  `latitud1` text NOT NULL,
+  `longitud1` text NOT NULL,
   `direccion2_contacto` varchar(100) NOT NULL,
-  `latlong2` varchar(40) NOT NULL,
+  `latitud2` text NOT NULL,
+  `longitud2` text NOT NULL,
   `fk_id_user` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -46,14 +48,14 @@ CREATE TABLE `tbl_contacto` (
 -- Volcado de datos para la tabla `tbl_contacto`
 --
 
-INSERT INTO `tbl_contacto` (`id_contacto`, `nombre_contacto`, `apellidos_contacto`, `email_contacto`, `telefono_contacto`, `imagen_contacto`, `direccion1_contacto`, `latlong1`, `direccion2_contacto`, `latlong2`, `fk_id_user`) VALUES
-(2, 'Ivan', 'Garcia', '', 987654321, 'default.png', '', '', '', '', 3),
-(8, 'Oscar', 'Gonzalez', 'vic@gmail.com', 0, 'perfil3.png', 'C/Girona Prat De Llobregat', '', 'Av.Remolars Barcelona', '', 3),
-(9, 'Gerard', 'Pazos', 'ur@gmail.com', 0, 'perfil1.png', 'C/Estels Barcelona', '', 'Av.Campana Barcelona', '', 3),
-(10, 'Marc', 'Garcia', 'random@gmail.com', 0, 'perfil4.png', 'C/Margarides Viladecans', '', 'C/Manresa Girona', '', 3),
-(11, 'Ivan', 'Perez', 'randomm@gmail.com', 0, 'default.png', 'av/random', '', 'av/random2', '', 4),
-(17, 'Felipe', 'Perez', 'random@gmail.com', 0, 'default.png', '', '', '', '', 3),
-(20, 'jaime', 'carcedo', 'jaime@gmail.com', 98765421, 'default.png', 'av.carmen amaya', '', '', '', 3);
+INSERT INTO `tbl_contacto` (`id_contacto`, `nombre_contacto`, `apellidos_contacto`, `email_contacto`, `telefono_contacto`, `imagen_contacto`, `direccion1_contacto`, `latitud1`, `longitud1`, `direccion2_contacto`, `latitud2`, `longitud2`, `fk_id_user`) VALUES
+(2, 'Ivan', 'Garcia', '', 987654321, 'default.png', '', '40.567', '2.980', '', '', '', 3),
+(8, 'Oscar', 'Gonzalez', 'vic@gmail.com', 0, 'perfil3.png', 'C/Girona Prat De Llobregat', '20', '50', 'Av.Remolars Barcelona', '', '', 3),
+(9, 'Gerard', 'Pazos', 'ur@gmail.com', 0, 'perfil1.png', 'C/Estels Barcelona', '21', '3', 'Av.Campana Barcelona', '', '', 3),
+(10, 'Marc', 'Garcia', 'random@gmail.com', 0, 'perfil4.png', 'C/Margarides Viladecans', '0', '0', 'C/Manresa Girona', '', '', 3),
+(11, 'Ivan', 'Perez', 'randomm@gmail.com', 0, 'default.png', 'av/random', '0', '0', 'av/random2', '', '', 4),
+(17, 'Felipe', 'Perez', 'random@gmail.com', 0, 'default.png', '', '0', '0', '', '', '', 3),
+(20, 'jaime', 'carcedo', 'jaime@gmail.com', 98765421, 'default.png', 'av.carmen amaya', '0', '0', '', '', '', 3);
 
 -- --------------------------------------------------------
 

@@ -264,13 +264,13 @@ function ActualizarUser(userid){
 //Mapa:
 
 //Activa o Desactiva el div del mapa
-function ActivarMapa(){
+function ActivarMapa(userid){
     var mostrar = document.getElementById('bot_mostrar').value;
     if (mostrar==0){
         document.getElementById('bot_mostrar').innerHTML = "Ocultar Mapa";
         var buscar = document.getElementById('map').style.display = "block";
         document.getElementById('bot_mostrar').value=1;
-        CargarMapa();
+        CargarMapa(userid);
     }else{
        document.getElementById('bot_mostrar').innerHTML = "Mostrar Mapa";
        var buscar = document.getElementById('map').style.display = "none";
@@ -278,35 +278,57 @@ function ActivarMapa(){
     }
 }
 
-function CargarMapa() {
+function CargarMapa(userid) {
     // inicializamos el mapa en el div "mapid" en las coordenadas dadas y a zoom 13
- var map = L.map('map').setView([40.91, -96.63], 4);
+     var map = L.map('map').setView([41.353, 2.107058], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                 attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+                 }).addTo(map);
+    var ajax2=objetoAjax();
+    ajax2.open("POST", "services/consultamapa.php", true);
+    
+        ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax2.send("userid="+userid);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
 
+ajax2.onreadystatechange=function() {
+ if (ajax2.readyState==4 && ajax2.status==200) {
+     var res=JSON.parse(ajax2.responseText);
+           
+           
+                
+                
+
+            for(var i=0;i<res.length;i++) {
+
+                 L.marker([res[i].latitud1,res[i].longitud1], {
+                                    title: res[i].direccion1_contacto,
+                                    draggable:false,
+                                    opacity: 1
+                }).bindPopup("<p style='text-align:center;'><b>"+res[i].nombre_contacto+"</b></p>"+res[i].direccion1_contacto)
+                .addTo(map);
+                 L.marker([res[i].latitud2,res[i].longitud2], {
+                                    title: res[i].direccion2_contacto,
+                                    draggable:false,
+                                    opacity: 1
+                }).bindPopup("<p style='text-align:center;'><b>"+res[i].nombre_contacto+"</b></p>"+res[i].direccion2_contacto)
+                .addTo(map);
+            }
+            }
+        }
+
+    
   var searchControl = L.esri.Geocoding.geosearch().addTo(map);
 
   var results = L.layerGroup().addTo(map);
 
   searchControl.on('results', function (data) {
     results.clearLayers();
-    for (var i = data.results.length - 1; i >= 0; i--) {
-      results.addLayer(L.marker(data.results[i].latlng));
-    }
+    
+    //  results.addLayer(L.marker([41.353, 2.107058]));
+    
   });
-  var popup = L.popup();
-   function onMapClick(e) {
-      popup
-        .setLatLng(e.latlng)
-        .setContent("Has clicado el mapa en " + e.latlng.toString())
-        .openOn(map);
-    }
-    // aqui relacionamos el evento click con la funcion que acabamos de crear
-    map.on('click', onMapClick);
 }
-
 //Eliminar una cuenta de usuario
 function EliminarCuenta(userid){
     var confirmacion = confirm("Estas seguro de eliminar tu cuenta? Todos tus contactos se perderán");

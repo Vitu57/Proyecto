@@ -61,7 +61,7 @@
         <!-- Tabla contactos -->
         <div class="cont-tabla-contactos">
             <div id="resultado" style="overflow-y:auto; max-height: 450px;" class="resultado-tabla"></div><br>
-            <button id="bot_mostrar" value="0" class="btn-rosa" style="width: 15%; margin-top: 1%;" onclick="ActivarMapa(); return false;">Mostrar Mapa</button><br><br>
+            <button id="bot_mostrar" value="0" class="btn-rosa" style="width: 15%; margin-top: 1%;" onclick="ActivarMapa(<?php echo $userid;?>); return false;">Mostrar Mapa</button><br><br>
             <div id="map" style="display: none;"></div>
         </div>
 
