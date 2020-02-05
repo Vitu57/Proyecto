@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-02-2020 a las 19:34:46
+-- Tiempo de generación: 05-02-2020 a las 23:00:15
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -49,13 +49,15 @@ CREATE TABLE `tbl_contacto` (
 --
 
 INSERT INTO `tbl_contacto` (`id_contacto`, `nombre_contacto`, `apellidos_contacto`, `email_contacto`, `telefono_contacto`, `imagen_contacto`, `direccion1_contacto`, `latitud1`, `longitud1`, `direccion2_contacto`, `latitud2`, `longitud2`, `fk_id_user`) VALUES
-(2, 'Ivan', 'Garcia', '', 987654321, 'default.png', '', '40.567', '2.980', '', '', '', 3),
+(2, 'Ivan', 'Garcia', '', 987654321, 'default.png', 'Negreira, 15830, Negreira, A Coruña, Galicia', '42.91040247020578', '-8.743327969913654', '', '', '', 3),
 (8, 'Oscar', 'Gonzalez', 'vic@gmail.com', 0, 'perfil3.png', 'C/Girona Prat De Llobregat', '20', '50', 'Av.Remolars Barcelona', '', '', 3),
 (9, 'Gerard', 'Pazos', 'ur@gmail.com', 0, 'perfil1.png', 'C/Estels Barcelona', '21', '3', 'Av.Campana Barcelona', '', '', 3),
 (10, 'Marc', 'Garcia', 'random@gmail.com', 0, 'perfil4.png', 'C/Margarides Viladecans', '0', '0', 'C/Manresa Girona', '', '', 3),
 (11, 'Ivan', 'Perez', 'randomm@gmail.com', 0, 'default.png', 'av/random', '0', '0', 'av/random2', '', '', 4),
-(17, 'Felipe', 'Perez', 'random@gmail.com', 0, 'default.png', '', '0', '0', '', '', '', 3),
-(20, 'jaime', 'carcedo', 'jaime@gmail.com', 98765421, 'default.png', 'av.carmen amaya', '0', '0', '', '', '', 3);
+(17, 'Felipe', 'Perez', 'random@gmail.com', 0, 'default.png', 'Avinyonet del Penedès, Barcelona, Catalunya', '41.33789599973479', '1.7786861635053923', '', '', '', 3),
+(20, 'jaime', 'carcedo', 'jaime@gmail.com', 98765421, 'default.png', '11370', '36.21879505532196', '-5.534306703546464', '', '', '', 3),
+(21, 'jaime2', 'carcedo2', 'jaime2@gmail.com', 987654321, 'default.png', 'av.carmen amaya', '', '', 'abvvaba', '', '', 3),
+(22, 'prueba', 'pruebas', 'prueba@gmail.com', 123456789, 'default.png', '15822', '42.852812868190014', '-8.345270993160966', '', '', '', 3);
 
 -- --------------------------------------------------------
 
@@ -133,7 +135,7 @@ ALTER TABLE `tbl_usuario`
 -- AUTO_INCREMENT de la tabla `tbl_contacto`
 --
 ALTER TABLE `tbl_contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_telefono`

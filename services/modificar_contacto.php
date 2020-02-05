@@ -10,13 +10,15 @@ include "conexion.php";
   $dir2=$_REQUEST["dir2"];
   $contador=$_REQUEST['contador'];
   $contacto=$_REQUEST['contacto'];
+  $latitud1=$_REQUEST['latitud1'];
+  $longitud1=$_REQUEST['longitud1'];
 
 if($foto!=''){
     move_uploaded_file($foto, "img/$foto");
     $destino="$foto";
-    $sql= mysqli_query($conn, "UPDATE `tbl_contacto` SET `nombre_contacto`='$nombre',`apellidos_contacto`='$apellidos',`telefono_contacto`='$telef',`email_contacto`='$mail',`imagen_contacto`='$destino',`direccion1_contacto`='$dir1',`direccion2_contacto`='$dir2' WHERE id_contacto=$userid");
+    $sql= mysqli_query($conn, "UPDATE `tbl_contacto` SET `nombre_contacto`='$nombre',`apellidos_contacto`='$apellidos',`telefono_contacto`='$telef',`email_contacto`='$mail',`imagen_contacto`='$destino',`direccion1_contacto`='$dir1',`direccion2_contacto`='$dir2',`latitud1`='$latitud1',`longitud1`='$longitud1' WHERE id_contacto=$userid");
   }else{
-    $sql= mysqli_query($conn, "UPDATE `tbl_contacto` SET `nombre_contacto`='$nombre',`apellidos_contacto`='$apellidos',`telefono_contacto`='$telef',`email_contacto`='$mail',`direccion1_contacto`='$dir1',`direccion2_contacto`='$dir2' WHERE id_contacto=$userid"); 
+    $sql= mysqli_query($conn, "UPDATE `tbl_contacto` SET `nombre_contacto`='$nombre',`apellidos_contacto`='$apellidos',`telefono_contacto`='$telef',`email_contacto`='$mail',`direccion1_contacto`='$dir1',`direccion2_contacto`='$dir2',`latitud1`='$latitud1',`longitud1`='$longitud1' WHERE id_contacto=$userid"); 
   }
   
   

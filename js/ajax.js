@@ -39,11 +39,11 @@ function CrearTabla(userid){
                             tabla += '<td>' + '<img style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" src="img/' + respuesta2[i].imagen_contacto + '">' + '</td>';
                             tabla += '<td>' + respuesta2[i].nombre_contacto+ "</td>";
                             tabla += '<td>' + respuesta2[i].apellidos_contacto+ "</td>";
-                            tabla += '<td>' + respuesta2[i].telefono_contacto+ '<a class="telef-adic" style="padding-left:5px;" title="Teléfonos adicionales" href="#myModal" onclick="RellenarTlf('+respuesta2[i].id_contacto+');"><i class="fas fa-plus-circle" style="color:blue;" ></i></a></td>';
+                            tabla += '<td>' + respuesta2[i].telefono_contacto+ '<a style="padding-left:5px;" title="Teléfonos adicionales" href="#myModal" onclick="RellenarTlf('+respuesta2[i].id_contacto+');"><i class="fas fa-plus-circle" style="color:blue;" ></i></a></td>';
                             tabla += '<td>' + respuesta2[i].email_contacto+ "</td>";
                             tabla += '<td>' + respuesta2[i].direccion1_contacto+ "</td>";
                             tabla += '<td>' + respuesta2[i].direccion2_contacto+ "</td>";
-                            tabla += '<td><a href="modificar.php?id='+respuesta2[i].id_contacto+'"title="Modificar contacto" style="display:inline;"><img class="img-proc" src="imagenes_pag/edit.png" width="20" height="auto"></a><a href="" onclick="eliminarContacto('+userid+','+respuesta2[i].id_contacto+'); return false;" title="Borrar contacto" style="display:inline;"><img class="img-proc" src="imagenes_pag/borrar.png" width="20" height="20"></a></td>';
+                            tabla += '<td><a href="modificar.php?id='+respuesta2[i].id_contacto+'"title="Modificar contacto" style="display:inline;"><img src="imagenes_pag/edit.png" width="16" height="16"></a><a href="" onclick="eliminarContacto('+userid+','+respuesta2[i].id_contacto+'); return false;" title="Borrar contacto" style="display:inline;"><img src="imagenes_pag/borrar.png" width="20" height="20"></a></td>';
                             tabla += '</tr>';
                         }
                         tabla+='</thead></table>';
@@ -92,14 +92,12 @@ function InsertarContacto(userid){
     var apellidos = document.getElementById('apellidos-contacto').value;
     var telefono = document.getElementById('tlf-contacto').value;
     var mail = document.getElementById('mail-contacto').value;
-    var dir1 = document.getElementById('direccion-1-contacto').value;
-    var dir2 = document.getElementById('direccion-2-contacto').value;
     var foto = document.getElementById('img-contacto').value;
     var img_perf=foto.substr(12, foto.length);
     var ajax2=objetoAjax();
 	ajax2.open("POST", "services/insertar.php", true);
         ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax2.send("userid="+userid+"&nombre="+nombre+"&apellidos="+apellidos+"&foto="+img_perf+"&telefono="+telefono+"&mail="+mail+"&dir1="+dir1+"&dir2="+dir2);
+        ajax2.send("userid="+userid+"&nombre="+nombre+"&apellidos="+apellidos+"&foto="+img_perf+"&telefono="+telefono+"&mail="+mail);
 	ajax2.onreadystatechange=function() {
 		if (ajax2.readyState==4 && ajax2.status==200) {
                     CrearTabla(userid);
@@ -134,6 +132,8 @@ function limpiar(){
                         document.getElementById('email').value = respuesta2[i].email_contacto;
                         document.getElementById('dir1').value = respuesta2[i].direccion1_contacto;
                         document.getElementById('dir2').value = respuesta2[i].direccion2_contacto;
+                        document.getElementById('latitud1').value = respuesta2[i].latitud1;
+                        document.getElementById('longitud1').value = respuesta2[i].longitud1;
                         //'C:\fakepath\\' + respuesta2[i].imagen_contacto;
                     }
                 }
@@ -165,11 +165,14 @@ function ActualizarContacto(userid){
     var foto = document.getElementById('foto').value
     var dir1 = document.getElementById('dir1').value
     var dir2 = document.getElementById('dir2').value
+    var latitud1 = document.getElementById('latitud1').value
+    var longitud1 = document.getElementById('longitud1').value
     var img_perf=foto.substr(12, foto.length);
     var ajax2=objetoAjax();
+   
 	ajax2.open("POST", "services/modificar_contacto.php", true);
         ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax2.send("userid="+userid+"&nombre="+nombre+"&apellidos="+apellidos+"&telefono="+telefono+"&foto="+img_perf+"&mail="+email+"&dir1="+dir1+"&dir2="+dir2);
+        ajax2.send("userid="+userid+"&nombre="+nombre+"&apellidos="+apellidos+"&telefono="+telefono+"&foto="+img_perf+"&mail="+email+"&dir1="+dir1+"&dir2="+dir2+"&latitud1="+latitud1+"&longitud1="+longitud1);
 	ajax2.onreadystatechange=function() {
 		if (ajax2.readyState==4 && ajax2.status==200) {
                     RellenarModificar(userid);
@@ -280,7 +283,7 @@ function ActivarMapa(userid){
 
 function CargarMapa(userid) {
     // inicializamos el mapa en el div "mapid" en las coordenadas dadas y a zoom 13
-     var map = L.map('map').setView([41.353, 2.107058], 13);
+     var map = L.map('map').setView([41.353, 2.107058], 6);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                  attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
                  }).addTo(map);
@@ -300,7 +303,7 @@ ajax2.onreadystatechange=function() {
                 
 
             for(var i=0;i<res.length;i++) {
-            if (res[i].latitud1!=0 && res[i].longitud1!=0) {
+                 if (res[i].latitud1!=0 && res[i].longitud1!=0) {
                  L.marker([res[i].latitud1,res[i].longitud1], {
                                     title: res[i].direccion1_contacto,
                                     draggable:false,
@@ -357,13 +360,13 @@ function RellenarTlf(userid){
 	ajax2.open("POST", "services/consulta_telefonos.php", true);
         ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         ajax2.send("userid="+userid);
-        var formulario = '<h2 style="text-align:center; font-family: Arial">Teléfonos</h2>';
+        var formulario = '<h2 style="text-align:center;">Teléfonos</h2>';
         formulario += '<form method="post" accept-charset="UTF-8"">';
         ajax2.onreadystatechange=function() {
 		if (ajax2.readyState==4 && ajax2.status==200) {
                     var respuesta2=JSON.parse(this.responseText);
                     for (var i = 0; i < respuesta2.length; i++) {
-                        formulario += "<br><select class='btn-rosa' id='tipo_tlf'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select>";
+                        formulario += "<br><select id='tipo_tlf'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select>";
                         formulario += '<input id="tlf" type="text" value="'+respuesta2[i].num_telefono+'">';
                         //respuesta2[i].tipo_telefono
                     }
@@ -381,7 +384,7 @@ function AñadirTlf(){
    var contador2=2;
    var telefonos = "";
    for (var i = 0; i < contador; i++) {
-       telefonos=telefonos+"<center><select id='tipo_tlf"+contador2+"'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select></center><input type='text' name='telefono"+contador2+"' id='telefono"+contador2+"'><br>";
+       telefonos=telefonos+"<select id='tipo_tlf"+contador2+"'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select><input type='text' name='telefono"+contador2+"' id='telefono"+contador2+"'><br>";
        contador2++;
    }
    var numero=parseInt(contador);
@@ -407,5 +410,45 @@ function InsertarTlf(userid){
                 }
             }
 }
- 
+function cargarcontactomapa(){
 
+var map = L.map('map').setView([41.353, 2.107058], 4);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                 attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+                 }).addTo(map);
+
+  var geocodeService = L.esri.Geocoding.geocodeService();
+
+  map.on('click', function (e) {
+    map.eachLayer(function (layer) {
+    map.removeLayer(layer);
+});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+    geocodeService.reverse().latlng(e.latlng).run(function (error, result) {
+      if (error) {
+        return;
+      }
+
+      L.marker(result.latlng).addTo(map).bindPopup(result.address.Match_addr).openPopup();
+      document.getElementById('latitud1').value=result.latlng.lat;
+       document.getElementById('longitud1').value=result.latlng.lng;
+       document.getElementById('dir1').value=result.address.Match_addr;
+       
+       
+    });
+    
+  });
+  var searchControl = L.esri.Geocoding.geosearch().addTo(map);
+
+  var results = L.layerGroup().addTo(map);
+
+  searchControl.on('results', function (data) {
+    results.clearLayers();
+    
+    //  results.addLayer(L.marker([41.353, 2.107058]));
+    
+  });
+}

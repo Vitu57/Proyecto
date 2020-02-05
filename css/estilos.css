@@ -111,8 +111,7 @@ p {
   font-size: 25px;
   border-radius: 50%;
   color: white;
-  transition: 0.1s;
-  border: 0;
+  transition: 0.4s;
   cursor: pointer;
 }
 .btn-despl-rosa:hover {
@@ -196,19 +195,8 @@ header img {
 .cont-tabla-contactos .resultado-tabla table tr:hover {
   background: #dedede;
 }
-.cont-tabla-contactos .resultado-tabla table tr:nth-child(1) {
-  font-weight: bold;
-}
 .cont-tabla-contactos .resultado-tabla table tr:nth-child(1):hover {
   background: transparent;
-}
-.cont-tabla-contactos .resultado-tabla table td .img-proc:hover {
-  transform: scale(1.2);
-}
-.cont-tabla-contactos .resultado-tabla table .telef-adic {
-  float: right;
-  color: #557dd6;
-  margin-right: 15%;
 }
 .despl-add-contactos.desp-activado {
   box-shadow: 0 0 10px 0px #989898;
@@ -251,6 +239,19 @@ header img {
 }
 #map {
   position: relative;
+  box-shadow: #b5b5b5 0px 0px 10px 1px;
+  top: 20px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  min-height: 300px;
+  max-height: 400px;
+  z-index: 1;
+  width: 95%;
+  margin-left: 5%;
+}
+#map2 {
+   position: relative;
   box-shadow: #b5b5b5 0px 0px 10px 1px;
   top: 20px;
   bottom: 0;
@@ -331,7 +332,7 @@ input[type="file"] {
   justify-content: center;
 }
 .modificar-contacts-body #modificar input {
-  width: 100%;
+  width: 80%;
   background-color: #e2e2e2;
   border: 1px solid #bdbdbd;
   border-radius: 25px;
@@ -345,10 +346,9 @@ input[type="file"] {
   cursor: pointer;
   margin-bottom: 5%;
 }
-.modificar-contacts-body #modificar img:hover {
-  transform: scale(1.03);
-}
+
 /*Modal telefonos*/
+
 .modalmask {
   position: fixed;
   font-family: Arial, sans-serif;

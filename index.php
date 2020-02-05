@@ -23,6 +23,12 @@
 
             <!-- Div contenedor formulario -->
             <div class="cont-formulario">
+                <?php
+                    if (isset($_GET['us'])) {
+                        echo "<p style='text-align:center; color:red;'>Nombre o contraseña incorrectos</p>";
+                    }
+                    ?>
+                    
                 <form id='login' action='login.proc.php' method='post' accept-charset='UTF-8' onsubmit = "return ValidacionLogin()">
                     
                     <input type="email" placeholder="Introduce el email" name="username" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="username" value="<?php 

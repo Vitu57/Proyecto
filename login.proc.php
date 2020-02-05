@@ -22,6 +22,6 @@ if (isset($_REQUEST["username"])) {
             $_SESSION['nombre']=$nombre;
             header("Location: home.php");
         }else{
-            echo"<script type='text/javascript'>alert('Usuario o contraseña incorrectos')</script>";
+            
             header('Refresh:0; url = index.php?us='.$email_usuario); 
         }
