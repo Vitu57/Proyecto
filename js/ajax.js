@@ -39,11 +39,11 @@ function CrearTabla(userid){
                             tabla += '<td>' + '<img style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" src="img/' + respuesta2[i].imagen_contacto + '">' + '</td>';
                             tabla += '<td>' + respuesta2[i].nombre_contacto+ "</td>";
                             tabla += '<td>' + respuesta2[i].apellidos_contacto+ "</td>";
-                            tabla += '<td>' + respuesta2[i].telefono_contacto+ '<a style="padding-left:5px;" title="Teléfonos adicionales" href="#myModal" onclick="RellenarTlf('+respuesta2[i].id_contacto+');"><i class="fas fa-plus-circle" style="color:blue;" ></i></a></td>';
+                            tabla += '<td>' + respuesta2[i].telefono_contacto+ '<a class="telef-adic" style="padding-left:5px;" title="Teléfonos adicionales" href="#myModal" onclick="RellenarTlf('+respuesta2[i].id_contacto+');"><i class="fas fa-plus-circle" style="color:blue;" ></i></a></td>';
                             tabla += '<td>' + respuesta2[i].email_contacto+ "</td>";
                             tabla += '<td>' + respuesta2[i].direccion1_contacto+ "</td>";
                             tabla += '<td>' + respuesta2[i].direccion2_contacto+ "</td>";
-                            tabla += '<td><a href="modificar.php?id='+respuesta2[i].id_contacto+'"title="Modificar contacto" style="display:inline;"><img src="imagenes_pag/edit.png" width="16" height="16"></a><a href="" onclick="eliminarContacto('+userid+','+respuesta2[i].id_contacto+'); return false;" title="Borrar contacto" style="display:inline;"><img src="imagenes_pag/borrar.png" width="20" height="20"></a></td>';
+                            tabla += '<td><a href="modificar.php?id='+respuesta2[i].id_contacto+'"title="Modificar contacto" style="display:inline;"><img class="img-proc" src="imagenes_pag/edit.png" width="20" height="auto"></a><a href="" onclick="eliminarContacto('+userid+','+respuesta2[i].id_contacto+'); return false;" title="Borrar contacto" style="display:inline;"><img class="img-proc" src="imagenes_pag/borrar.png" width="20" height="20"></a></td>';
                             tabla += '</tr>';
                         }
                         tabla+='</thead></table>';
@@ -354,13 +354,13 @@ function RellenarTlf(userid){
 	ajax2.open("POST", "services/consulta_telefonos.php", true);
         ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         ajax2.send("userid="+userid);
-        var formulario = '<h2 style="text-align:center;">Teléfonos</h2>';
+        var formulario = '<h2 style="text-align:center; font-family: Arial">Teléfonos</h2>';
         formulario += '<form method="post" accept-charset="UTF-8"">';
         ajax2.onreadystatechange=function() {
 		if (ajax2.readyState==4 && ajax2.status==200) {
                     var respuesta2=JSON.parse(this.responseText);
                     for (var i = 0; i < respuesta2.length; i++) {
-                        formulario += "<br><select id='tipo_tlf'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select>";
+                        formulario += "<br><select class='btn-rosa' id='tipo_tlf'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select>";
                         formulario += '<input id="tlf" type="text" value="'+respuesta2[i].num_telefono+'">';
                         //respuesta2[i].tipo_telefono
                     }
@@ -378,7 +378,7 @@ function AñadirTlf(){
    var contador2=2;
    var telefonos = "";
    for (var i = 0; i < contador; i++) {
-       telefonos=telefonos+"<select id='tipo_tlf"+contador2+"'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select><input type='text' name='telefono"+contador2+"' id='telefono"+contador2+"'><br>";
+       telefonos=telefonos+"<center><select id='tipo_tlf"+contador2+"'><option value='telefono'>Tlf</option><option value='movil'>Móvil</option><option value='fax'>FAX</option><option value='otros'>Otros</option></select></center><input type='text' name='telefono"+contador2+"' id='telefono"+contador2+"'><br>";
        contador2++;
    }
    var numero=parseInt(contador);

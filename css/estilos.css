@@ -111,7 +111,8 @@ p {
   font-size: 25px;
   border-radius: 50%;
   color: white;
-  transition: 0.4s;
+  transition: 0.1s;
+  border: 0;
   cursor: pointer;
 }
 .btn-despl-rosa:hover {
@@ -195,8 +196,19 @@ header img {
 .cont-tabla-contactos .resultado-tabla table tr:hover {
   background: #dedede;
 }
+.cont-tabla-contactos .resultado-tabla table tr:nth-child(1) {
+  font-weight: bold;
+}
 .cont-tabla-contactos .resultado-tabla table tr:nth-child(1):hover {
   background: transparent;
+}
+.cont-tabla-contactos .resultado-tabla table td .img-proc:hover {
+  transform: scale(1.2);
+}
+.cont-tabla-contactos .resultado-tabla table .telef-adic {
+  float: right;
+  color: #557dd6;
+  margin-right: 15%;
 }
 .despl-add-contactos.desp-activado {
   box-shadow: 0 0 10px 0px #989898;
@@ -333,59 +345,100 @@ input[type="file"] {
   cursor: pointer;
   margin-bottom: 5%;
 }
-
+.modificar-contacts-body #modificar img:hover {
+  transform: scale(1.03);
+}
 /*Modal telefonos*/
-
 .modalmask {
-	position: fixed;
-	font-family: Arial, sans-serif;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background: rgba(0,0,0,0.8);
-	z-index: 20;
-	opacity:0;
-	-webkit-transition: opacity 400ms ease-in;
-	-moz-transition: opacity 400ms ease-in;
-	transition: opacity 400ms ease-in;
-	pointer-events: none;
+  position: fixed;
+  font-family: Arial, sans-serif;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
 }
-
 .modalmask:target {
-	opacity:1;
-	pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
-
 .resize {
-	margin: 10% auto;
-	width:0;
-	height:0;
-
+  margin: 10% auto;
+  width: 0;
+  height: 0;
 }
-
-.modalmask:target .resize{
-	width:400px;
-	height:200px;
+.modalmask:target .resize {
+  width: 400px;
+  height: 200px;
 }
-
-.modalmask:target .movedown{
-	margin:10% auto;
+.modalmask:target .movedown {
+  margin: 10% auto;
 }
-
-.modalbox{
-	width: 400px;
-	position: relative;
-	padding: 5px 20px 13px 20px;
-	background: #fff;
-	border-radius:3px;
-	-webkit-transition: all 500ms ease-in;
-	-moz-transition: all 500ms ease-in;
-	transition: all 500ms ease-in;
-
+.modalbox {
+  width: 400px;
+  position: relative;
+  padding: 5px 20px 13px 20px;
+  background: #fff;
+  border-radius: 3px;
+  -webkit-transition: all 500ms ease-in;
+  -moz-transition: all 500ms ease-in;
+  transition: all 500ms ease-in;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  min-height: 75vh;
 }
-
 .movedown {
-	margin: 0 auto;
+  margin: 0 auto;
 }
-
+.modalmask select {
+  margin-bottom: 10px;
+  padding: 0;
+  background-color: #557dd6;
+  border: 0;
+  color: white;
+  border-radius: 3px;
+  width: 48%;
+  cursor: pointer;
+}
+.modalmask select:hover {
+  background-color: #405fa2;
+}
+.modalmask input {
+  width: 85%;
+  background-color: #e2e2e2;
+  border: 1px solid #bdbdbd;
+  border-radius: 25px;
+  padding: 5px 15px;
+  margin-bottom: 3%;
+}
+.modalmask button {
+  background-color: #557dd6;
+  border: 0;
+  margin-top: 5%;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+  width: 100%;
+  cursor: pointer;
+}
+.modalmask button:hover {
+  background-color: #405fa2;
+}
+.modalmask form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.modalmask form a {
+  cursor: pointer;
+  color: #557dd6;
+}
