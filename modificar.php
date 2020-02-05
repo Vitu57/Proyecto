@@ -25,7 +25,7 @@
     ?>
     <body class="modificar-contacts-body" onload="RellenarModificar(<?php echo $id_user; ?>)">
         <div style="position: relative; margin: auto; width: 50%;">
-            <a href="home.php" style="float: right;"><button>Volver</button></a>
+            <a href="home.php" style="float: right;"><button class="btn-rosa" style="width: 100%; float: right">Volver</button></a></a>
             <form id='modificar' method='post' accept-charset='UTF-8' onsubmit = "ValidacionModificar(<?php echo $id_user; ?>); return false;">
                 
                 <!-- <input type="" name="imagen-perfil" id="imagen-perfil"> -->
